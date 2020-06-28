@@ -25,7 +25,6 @@ a:hover {
 
 .wrapper {
 	min-height: 100vh;
-	background: #1d373f;
 }
 
 .formContainer{
@@ -69,6 +68,7 @@ a:hover {
     padding: 1em 2em;
     background: #000;
     color: #fff;
+    font-size: 1.5vw;
 }
 
 .loading_eye {
@@ -76,6 +76,7 @@ a:hover {
     position: absolute;
     height: 100vh;
     width: 100vw;
+    z-index: 100;
 }
 
 .eye {

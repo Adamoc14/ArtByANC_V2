@@ -1,0 +1,225 @@
+.top_section_main_container {
+    -webkit-perspective: 1500px;
+    perspective: 1500px;
+    -webkit-perspective-origin: 0% 50%;
+    perspective-origin: 0% 50%;
+}
+
+.top_section_main_container img {
+	width: 100vw;
+	height: 100vh;
+	object-fit: cover;
+}
+
+.hamburger_menu_container {
+	position: absolute;
+	z-index: 1;
+	width: 6vw;
+	height: 10vh;
+	background: #c6a550;
+	margin: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.bar1,
+.bar2,
+.bar3 {
+	width: 40px;
+    height: 5px;
+    background: #1d373f;
+    margin: 6px 0;
+    transition: .4s;
+}
+
+.hamburger_slide_out_menu_container {
+    position: absolute;
+    width: 20vw;
+    height: 100vh;
+    background: #c6a550;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);
+    transform: translate3d(-100%, 0, 0) rotateY(-90deg);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.hamburger_slide_out_menu_container.active {
+    visibility: visible;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+	-webkit-transform: translate3d(-100%, 0, 0) rotateY(0deg);
+	transform: translate3d(-100%, 0, 0) rotateY(0deg);
+}
+
+.hamburger_slide_out_menu_container img {
+	width: 20vw;
+	height: 40vh;
+}
+
+.nav_links_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	height: 30vh;
+}
+
+.nav_links_container a {
+	font-weight: 400;
+	padding: .5em 1em;
+	text-transform: uppercase;
+}
+
+#middle_section_main_container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle_section_main_container_sm {
+    padding: 2em 2em;
+    /* height: 80vh; */
+    width: 98vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    width: 22vw;
+    height: 60vh;
+	position: relative;
+}
+
+.back,
+.front {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+	justify-content: center;
+}
+.back h2 {
+    margin-bottom: 1em;
+}
+
+.front {
+	background: #026aad;
+}
+
+.front img {
+	width: 100%;
+	height: 100%;
+}
+
+.back {
+	transform: rotateY(90deg);
+}
+
+.card:hover .front{
+	animation: twirl 0.2s ease-in forwards ;
+}
+
+.card:hover .back {
+	animation: twirl 0.2s 0.2s ease-out forwards reverse;
+}
+
+.card:first-child .back{
+    background: #72CFF1;
+}
+
+.card:nth-child(2) .front {
+    background: unset;
+}
+
+.card:nth-child(2) .back{
+    background: linear-gradient(180deg, #A8815E 0%, rgba(168, 129, 94, 0.94) 100%);
+}
+
+.card:nth-child(3) .front {
+    background: unset;
+}
+
+.card:nth-child(3) .back{
+    background: linear-gradient(179.94deg, #C09F4E 10.45%, #78B8A3 25.02%, rgba(204, 172, 109, 0.987692) 40.63%, rgba(198, 146, 110, 0.983192) 51.56%, rgba(178, 124, 108, 0.979292) 65.09%, rgba(192, 159, 78, 0.9) 77.58%, rgba(185, 129, 186, 0.968492) 83.31%, rgba(129, 66, 59, 0.833226) 93.2%, rgba(107, 33, 52, 0.81) 99.96%);
+}
+
+.card:last-child .back{
+    background: linear-gradient(179.94deg, #C09F4E 22.94%, #000000 68.22%, rgba(185, 129, 186, 0.968492) 99.95%, rgba(107, 33, 52, 0.81) 99.96%);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Media Queries */
+@media (max-width: 600px) {
+
+    .top_section_main_container img{
+        height: 50vh;
+    }
+    
+
+    .hamburger_slide_out_menu_container {
+        height: 50vh;
+        width: 30vw;
+    }
+    .hamburger_slide_out_menu_container img {
+        height: 16vh;
+        width: 29vw;
+        margin-top: 0vh;
+    }
+    .nav_links_container {
+        height: 20vh;
+    }
+    .hamburger_menu_container {
+        height: 4vh;
+    }
+    .bar1, .bar2, .bar3 {
+        width: 20px;
+        height: 4px;
+        margin: 1.3px 0;
+    }
+
+    .middle_section_main_container_sm{
+        flex-wrap: wrap;
+        height: 80vh;
+    }
+    .card {
+        width: 32vw;
+        height: 26vh;
+        position: relative;
+    }
+
+}
+
+
+
+/* Keyframes */
+@keyframes twirl {
+	0% {
+		transform: rotateY(0deg);
+	}
+	100% {
+		transform: rotateY(90deg);
+	}
+}

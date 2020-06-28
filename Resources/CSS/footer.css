@@ -1,0 +1,28 @@
+.bottom_section_main_container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom_section_main_container h2 {
+    padding: 1em;
+}
+
+.insta_pics_container {
+    padding: 1em 1em;
+    width: 80vw;
+    height: 85vh;
+}
+
+footer {
+    background: #c6a550;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 3em;
+}
