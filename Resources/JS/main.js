@@ -7,6 +7,7 @@
  */
 let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container')
 bars = [...document.querySelectorAll('.hamburger_menu_container div')]
+eye = $('.eye')
 
 
 /**
@@ -150,6 +151,7 @@ const delay = (ms) => {
 window.onload = () => loading_animation_start()
 
 $(document).ready(() => {
+    window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
     homeInit()
     slideInContainerFunc()
 
@@ -173,7 +175,9 @@ barba.init({
         {
             namespace: 'home',
             afterEnter() {
+                window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
                 homeInit()
+                slideInContainerFunc()
             },
             beforeLeave(data) {
                 
