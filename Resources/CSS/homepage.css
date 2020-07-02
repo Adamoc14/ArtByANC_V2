@@ -16,7 +16,7 @@
 	z-index: 1;
 	width: 6vw;
 	height: 10vh;
-	background: #c6a550;
+	background: #000;
 	margin: 1em;
 	display: flex;
 	flex-direction: column;
@@ -30,7 +30,7 @@
 .bar3 {
 	width: 40px;
     height: 5px;
-    background: #1d373f;
+    background: #fff;
     margin: 6px 0;
     transition: .4s;
 }
@@ -76,6 +76,15 @@
 	font-weight: 400;
 	padding: .5em 1em;
 	text-transform: uppercase;
+}
+
+.arrow_pulsing{
+    position: absolute;
+    top: 84vh;
+    left: 47vw;
+    width: 5vw;
+    height: 3vh;
+    font-size: 6vw;
 }
 
 #middle_section_main_container {

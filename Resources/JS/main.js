@@ -150,7 +150,21 @@ const homeInit = () => {
     bars = [...document.querySelectorAll('.hamburger_menu_container div')]
 
     window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -25 1233 295')
+    pulsingArrow()
     slideInContainerFunc(slideInContainer , bars)
+
+}
+
+const pulsingArrow = () => {
+    let arrow = $('.arrow_pulsing')
+    gsap.to(arrow , {
+        y: 12,
+        yoyo: true,
+        repeat: -1,
+        repeatDelay: .5,
+        duration: .7,
+        ease: "power2.out"
+    })
 }
 
 const slideInContainerFunc = (slideInContainer , bars) => {
@@ -165,79 +179,78 @@ const slideInContainerFunc = (slideInContainer , bars) => {
 
 const aboutInit = () => {
     console.log('We have lift off ')
-    let horizontalscrollAnim
-    cleanGSAP()
-    if(typeof horizontalscrollAnim === "undefined") {
-        scrollAbout();
-    }
-    window.dispatchEvent(new Event('resize'));
-    ScrollTrigger.refresh()
-
+    // let horizontalscrollAnim
+    // cleanGSAP()
+    // if(typeof horizontalscrollAnim === "undefined") {
+    //     scrollAbout();
+    // }
+    // window.dispatchEvent(new Event('resize'));
+    // ScrollTrigger.refresh()
 }
 
-const cleanGSAP = () => {
-    const allClasses = [...document.querySelectorAll('[class]')]
-    let gsapArray = []
-    if(allClasses.length <= 81) return
-    for (var i = 0; i < allClasses.length; i++) {
-        if (/gsap-/.test(allClasses[i].className)) {
-            gsapArray.push(allClasses[i].className);
-        } else 
-            break
-    }
-    gsapArray.map(tag => document.querySelector(`.${tag}`).remove())
-}
+// const cleanGSAP = () => {
+//     const allClasses = [...document.querySelectorAll('[class]')]
+//     let gsapArray = []
+//     if(allClasses.length <= 81) return
+//     for (var i = 0; i < allClasses.length; i++) {
+//         if (/gsap-/.test(allClasses[i].className)) {
+//             gsapArray.push(allClasses[i].className);
+//         } else 
+//             break
+//     }
+//     gsapArray.map(tag => document.querySelector(`.${tag}`).remove())
+// }
 
-const paintAbout = () => {
-    let paintTL = gsap.timeline({
-        delay: 8.1,
-        duration: 3
-    })
-    paintTL.set('#PaintBrush', {
-        xPercent: -50,
-        yPercent: -70,
-        transformOrigin: "50% 70%"
-    })
-    let firstAnim =gsap.fromTo('#text', {
-        drawSVG: "0%"
-    }, {
-        drawSVG: "100%",
-        duration: 60,
-        // delay: .4,
-        ease: "slow"
-    }),
-    secondAnim = gsap.to('#text', {
-        fill: "#72CFF1",
-        duration: 3,
-        delay: 8,
-        ease: "slow"
-    }),
-    thirdAnim = gsap.to('#PaintBrush', {
-        duration: 8,
-        motionPath: {
-            path: "#text",
-        }
-    })
-    paintTL.add([firstAnim , secondAnim , thirdAnim])
+// const paintAbout = () => {
+//     let paintTL = gsap.timeline({
+//         delay: 8.1,
+//         duration: 3
+//     })
+//     paintTL.set('#PaintBrush', {
+//         xPercent: -50,
+//         yPercent: -70,
+//         transformOrigin: "50% 70%"
+//     })
+//     let firstAnim =gsap.fromTo('#text', {
+//         drawSVG: "0%"
+//     }, {
+//         drawSVG: "100%",
+//         duration: 60,
+//         // delay: .4,
+//         ease: "slow"
+//     }),
+//     secondAnim = gsap.to('#text', {
+//         fill: "#72CFF1",
+//         duration: 3,
+//         delay: 8,
+//         ease: "slow"
+//     }),
+//     thirdAnim = gsap.to('#PaintBrush', {
+//         duration: 8,
+//         motionPath: {
+//             path: "#text",
+//         }
+//     })
+//     paintTL.add([firstAnim , secondAnim , thirdAnim])
 
-}
+// }
 
-const scrollAbout = () => {
-    let pages = [...document.querySelectorAll('.page')]
-    horizontalAnim = gsap.to(pages, {
-        xPercent: -100 * (pages.length - 1),
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".about",
-            pin: true,
-            markers: true,
-            scrub: 1,
-            snap: 1 / (pages.length - 1),
-            // base vertical scrolling on how wide the container is so it feels more natural.
-            end: () => "+=" + document.querySelector(".about").offsetWidth
-        }
-    });
-}
+// const scrollAbout = () => {
+//     let pages = [...document.querySelectorAll('.page')]
+//     horizontalAnim = gsap.to(pages, {
+//         xPercent: -100 * (pages.length - 1),
+//         ease: "none",
+//         scrollTrigger: {
+//             trigger: ".about",
+//             pin: true,
+//             markers: true,
+//             scrub: 1,
+//             snap: 1 / (pages.length - 1),
+//             // base vertical scrolling on how wide the container is so it feels more natural.
+//             end: () => "+=" + document.querySelector(".about").offsetWidth
+//         }
+//     });
+// }
 
 
 /**
@@ -289,7 +302,7 @@ barba.init({
             afterEnter() {
                 loading_animation_start()
                 aboutInit()
-                paintAbout();
+                // paintAbout();
             },
         },
         {
