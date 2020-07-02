@@ -126,7 +126,7 @@ const homeInit = () => {
     slideInContainerFunc(slideInContainer , bars)
 }
 
-const slideInContainerFunc = () => {
+const slideInContainerFunc = (slideInContainer , bars) => {
     bars.map(bar => bar.onclick = () => {
         slideInContainer.classList.toggle('active');
     });
@@ -253,8 +253,8 @@ barba.init({
         {
             namespace: 'home',
             afterEnter() {
+                loading_animation_start()
                 homeInit()
-                slideInContainerFunc()
             },
         },
         {
@@ -263,8 +263,6 @@ barba.init({
                 loading_animation_start()
                 aboutInit()
                 paintAbout();
-                // setTimeout(() => paintAbout(), 7000)
-                // scrollAbout()
             },
         }
     ],
