@@ -264,7 +264,13 @@ barba.init({
                 aboutInit()
                 paintAbout();
             },
-        }
+        },
+        {
+            namespace: 'contact',
+            afterEnter() {
+                loading_animation_start()
+            },
+        },
     ],
 });
 
