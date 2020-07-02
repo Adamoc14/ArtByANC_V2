@@ -26,11 +26,11 @@ eye = $('.eye')
  */
 const loading_animation_start = () => {
     let loading_screen = document.querySelector('.loading_eye'),
-    loading_animation = gsap.timeline({
-        duration: 2,
-        ease: "power4.out"
-    }),
-    loading_eye = document.querySelector('.eye')
+        loading_animation = gsap.timeline({
+            duration: 2,
+            ease: "power4.out"
+        }),
+        loading_eye = document.querySelector('.eye')
     loading_animation.to(loading_eye, {
         opacity: 1,
         ease: "power4.out",
@@ -42,20 +42,20 @@ const loading_animation_start = () => {
 
 const loading_animation_barba = () => {
     let loading_screen = document.querySelector('.loading_eye'),
-    loading_eye = document.querySelector('.eye')
+        loading_eye = document.querySelector('.eye')
     loading_animation = gsap.timeline(),
-    loading_animation.set(loading_screen, {
-        width: "100vw",
-        duration: .1,
-        ease: "slow"
-    },"-=.1")
+        loading_animation.set(loading_screen, {
+            width: "100vw",
+            duration: .1,
+            ease: "slow"
+        }, "-=.1")
     loading_animation.to(loading_eye, {
         opacity: 1,
         ease: "power4.out",
-        duration: .5
+        duration: .3
     })
     loading_animation.add(blinking(), "+=.1")
-    loading_animation.add(reset(loading_eye, loading_screen), "+=3")
+    loading_animation.add(reset(loading_eye, loading_screen), "+=2")
 }
 
 const blinking = () => {
@@ -67,7 +67,7 @@ const blinking = () => {
         duration: 2,
         ease: "power4.out"
     })
-    
+
     tl.to(['.Eyeball', '.Pupil'], {
         autoAlpha: 0,
         duration: .2,
@@ -83,11 +83,11 @@ const blinking = () => {
         scaleY: 0,
         transformOrigin: "center top",
     }),
-    top_lid = gsap.to('.Eye_Part_Top_Lid', {
-        duration: .2,
-        scaleY: .2,
-        transformOrigin: "center bottom",
-    })
+        top_lid = gsap.to('.Eye_Part_Top_Lid', {
+            duration: .2,
+            scaleY: .2,
+            transformOrigin: "center bottom",
+        })
     tl.add([bottom_lid, top_lid]);
     return tl
 }
@@ -132,6 +132,58 @@ const slideInContainerFunc = () => {
 /**
  * About Page Functions
  */
+const paintAbout = () => {
+    gsap.set('#PaintBrush', {
+        xPercent: -50,
+        yPercent: -70,
+        transformOrigin: "50% 70%"
+    })
+    gsap.fromTo('#text', {
+        drawSVG: "0%"
+    }, {
+        drawSVG: "100%",
+        duration: 15,
+        delay: .4,
+        ease: "slow"
+    })
+    gsap.to('#text', {
+        fill: "#72CFF1",
+        duration: 5,
+        delay: .4,
+        ease: "slow"
+    })
+    gsap.to('#PaintBrush', {
+        duration: 5,
+        // fill: "#72CFF1",
+        motionPath: {
+            path: "#text",
+            // autoRotate: true
+        }
+    })
+}
+
+const scrollAbout = () => {
+    let pages = [...document.querySelectorAll('.page')]
+    gsap.to(pages, {
+        xPercent: -100 * (pages.length - 1),
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".about",
+            pin: true,
+            markers: true,
+            scrub: 1,
+            snap: 1 / (pages.length - 1),
+            // base vertical scrolling on how wide the container is so it feels more natural.
+            end: () => "+=" + document.querySelector(".about").offsetWidth
+        }
+    });
+}
+
+
+
+
+
+
 
 
 /**
@@ -148,13 +200,13 @@ const delay = (ms) => {
 //____________________________________________________________________
 
 // Initialization Methods
-window.onload = () => loading_animation_start()
-
 $(document).ready(() => {
     window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
+    loading_animation_start()
     homeInit()
     slideInContainerFunc()
-
+    setTimeout(() => paintAbout(), 12000)
+    // scrollAbout()
 })
 
 barba.init({
@@ -164,7 +216,7 @@ barba.init({
         async leave() {
             const done = this.async();
             loading_animation_barba()
-            // await delay(1000);
+            await delay(1000);
             done();
         },
         async enter() {
@@ -180,7 +232,7 @@ barba.init({
                 slideInContainerFunc()
             },
             beforeLeave(data) {
-                
+
             }
         },
         {
@@ -190,7 +242,10 @@ barba.init({
                 // aboutInit()
             },
             afterEnter() {
-
+                setTimeout(() => paintAbout(), 7000)
+                scrollAbout()
+                // $('.about').css('height', '670vh')
+                // scrollAbout()
             },
         }
     ],
