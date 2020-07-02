@@ -1,3 +1,9 @@
+#about_body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
 .about{
     width: 300vw;
     height: 100vh;
@@ -26,8 +32,6 @@
     align-items: center;
     font-weight: 600;
     font-size: 1.5em;
-    /* text-align: center; */
-/*     padding: 10px; */
 }
 
 .brush{
@@ -53,6 +57,9 @@
 
 .blurb_container p {
     font-size: 1.5vw;
+}
+.about_hr{
+    margin:1em;
 }
 
 .icon_container {

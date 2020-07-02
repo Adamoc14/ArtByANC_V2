@@ -23,40 +23,52 @@ a:hover {
 	text-decoration: none;
 }
 
+hr {
+    margin: 3em;
+    outline: none;
+}
+
 .wrapper {
 	min-height: 100vh;
 }
 
-.formContainer{
+input[type=text],
+input[type=email],
+textarea { 
+    width: 100%;
+}
+textarea{
+    border: none;
+    resize: none;
+    padding-top: .3em;
+    text-indent: .4em;
+    border: 1px solid #eee;
+}
+
+label{
+    margin-bottom: .6em;
+}
+
+.formContainer {
     display: flex;
-    flex-wrap: wrap;
-    padding: 0 150px;
-    justify-content: flex-end;
+    width: 80vw;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 1em;
 }
 
 .formContainer input {
-    font-size: 14pt;
-    padding: 24px;
+    font-size: 1.5vw;
+    padding: 1em 1em;
     border: none;
-    margin: 12px;
     border-radius: 4px;
     transition: .3s ease;
     color: #333354;
+    border: 1px solid #eee;
 }
 
 .formContainer textarea {
-    margin: 8px;
-    width: 100%;
-    font-size: 14pt;
-    padding: 24px;
-    border: none;
-    margin: 12px;
-    border-radius: 4px;
-    transition: .3s ease;
-    resize: none;
-    height: 250px;
-    font-family: 'Lato';
-    color: #333354;
+    font-size: 1.5vw;
 }
 
 #name_input , 
@@ -91,16 +103,8 @@ a:hover {
 	:root{
 		--fontSize: 3vw;
 	}
-    /* input[type="text"], 
-    input[type="password"], 
-    input[type="email"] , 
-    input[type="tel"] ,
-    select,
-    textarea{
-        padding: .5em 4em .5em .4em;
-	}
-	textarea   {
-        padding-right: 3.9em;
-    } */
+    .art_by_anc_default_btn{
+        font-size: 2.5vw;
+    }
 
 }

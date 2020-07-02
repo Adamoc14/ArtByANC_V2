@@ -5,8 +5,8 @@
 /**
  * Homepage Variables
  */
-let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container')
-bars = [...document.querySelectorAll('.hamburger_menu_container div')]
+// let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container')
+// bars = [...document.querySelectorAll('.hamburger_menu_container div')]
 eye = $('.eye')
 
 
@@ -119,8 +119,11 @@ const reset = (loading_eye, loading_screen) => {
  */
 
 const homeInit = () => {
-    slideInContainer = document.querySelector('.hamburger_slide_out_menu_container')
+    let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container'),
     bars = [...document.querySelectorAll('.hamburger_menu_container div')]
+
+    window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
+    slideInContainerFunc(slideInContainer , bars)
 }
 
 const slideInContainerFunc = () => {
@@ -132,39 +135,69 @@ const slideInContainerFunc = () => {
 /**
  * About Page Functions
  */
+
+const aboutInit = () => {
+    console.log('We have lift off ')
+    let horizontalscrollAnim
+    cleanGSAP()
+    if(typeof horizontalscrollAnim === "undefined") {
+        scrollAbout();
+    }
+    window.dispatchEvent(new Event('resize'));
+    ScrollTrigger.refresh()
+
+}
+
+const cleanGSAP = () => {
+    const allClasses = [...document.querySelectorAll('[class]')]
+    let gsapArray = []
+    if(allClasses.length <= 81) return
+    for (var i = 0; i < allClasses.length; i++) {
+        if (/gsap-/.test(allClasses[i].className)) {
+            gsapArray.push(allClasses[i].className);
+        } else 
+            break
+    }
+    gsapArray.map(tag => document.querySelector(`.${tag}`).remove())
+}
+
 const paintAbout = () => {
-    gsap.set('#PaintBrush', {
+    let paintTL = gsap.timeline({
+        delay: 8.1,
+        duration: 3
+    })
+    paintTL.set('#PaintBrush', {
         xPercent: -50,
         yPercent: -70,
         transformOrigin: "50% 70%"
     })
-    gsap.fromTo('#text', {
+    let firstAnim =gsap.fromTo('#text', {
         drawSVG: "0%"
     }, {
         drawSVG: "100%",
-        duration: 15,
-        delay: .4,
+        duration: 60,
+        // delay: .4,
         ease: "slow"
-    })
-    gsap.to('#text', {
+    }),
+    secondAnim = gsap.to('#text', {
         fill: "#72CFF1",
-        duration: 5,
-        delay: .4,
+        duration: 3,
+        delay: 8,
         ease: "slow"
-    })
-    gsap.to('#PaintBrush', {
-        duration: 5,
-        // fill: "#72CFF1",
+    }),
+    thirdAnim = gsap.to('#PaintBrush', {
+        duration: 8,
         motionPath: {
             path: "#text",
-            // autoRotate: true
         }
     })
+    paintTL.add([firstAnim , secondAnim , thirdAnim])
+
 }
 
 const scrollAbout = () => {
     let pages = [...document.querySelectorAll('.page')]
-    gsap.to(pages, {
+    horizontalAnim = gsap.to(pages, {
         xPercent: -100 * (pages.length - 1),
         ease: "none",
         scrollTrigger: {
@@ -178,12 +211,6 @@ const scrollAbout = () => {
         }
     });
 }
-
-
-
-
-
-
 
 
 /**
@@ -200,14 +227,13 @@ const delay = (ms) => {
 //____________________________________________________________________
 
 // Initialization Methods
-$(document).ready(() => {
-    window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
-    loading_animation_start()
-    homeInit()
-    slideInContainerFunc()
-    setTimeout(() => paintAbout(), 12000)
-    // scrollAbout()
-})
+// $(document).ready(() => {
+//     // window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
+//     // homeInit()
+//     slideInContainerFunc()
+//     // setTimeout(() => paintAbout(), 12000)
+//     // scrollAbout()
+// })
 
 barba.init({
     sync: true,
@@ -218,33 +244,26 @@ barba.init({
             loading_animation_barba()
             await delay(1000);
             done();
-        },
-        async enter() {
-            window.scrollTo(0, 0);
-        },
+        }
+        // async beforeEnter() {
+        //     window.scrollTo(0, 0);
+        // },
     }],
     views: [
         {
             namespace: 'home',
             afterEnter() {
-                window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
                 homeInit()
                 slideInContainerFunc()
             },
-            beforeLeave(data) {
-
-            }
         },
         {
             namespace: 'about',
-            beforeEnter(data) {
-                // console.log(facts)
-                // aboutInit()
-            },
             afterEnter() {
-                setTimeout(() => paintAbout(), 7000)
-                scrollAbout()
-                // $('.about').css('height', '670vh')
+                loading_animation_start()
+                aboutInit()
+                paintAbout();
+                // setTimeout(() => paintAbout(), 7000)
                 // scrollAbout()
             },
         }

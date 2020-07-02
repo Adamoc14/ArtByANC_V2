@@ -1,0 +1,60 @@
+.contact_btn_container{
+    width: 100vw;
+    padding: 1em;
+    display: flex;
+}
+
+.main_container {
+    padding: 1em 1em;
+    padding-bottom: 2.5em;
+}
+
+.contact_container_sm:first-child {
+    text-align: center;
+}
+
+.contact_container_sm:nth-child(2) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.name_input, 
+.email_input,
+.message_input{
+    display: flex;
+    width: 40vw;
+    padding-bottom: 1em;
+    flex-direction: column;
+}
+
+
+.contact_container_sm span {
+    color: #72CFF1;
+}
+
+#message{
+    height: 20vh;
+}
+
+.contact_btn{
+    margin-top: 1em;
+}
+
+@media (max-width: 600px){
+    .contact {
+        min-height: 60vh;
+        height: 85vh;
+    }
+    .contact_container_sm:first-child{
+        height: 20vh;
+    }
+    .name_input, .email_input, .message_input{
+        width: 60vw;
+    }
+    .formContainer input , 
+    .formContainer textarea{
+        font-size: 3.5vw;
+    }
+}
+

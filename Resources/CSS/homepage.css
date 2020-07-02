@@ -199,15 +199,22 @@
         height: 4px;
         margin: 1.3px 0;
     }
+    #middle_section_main_container {
+        height: 51vh;
+        margin-top: 7em;
+    }
 
     .middle_section_main_container_sm{
         flex-wrap: wrap;
-        height: 80vh;
+        height: 64vh;
     }
     .card {
         width: 32vw;
-        height: 26vh;
+        height: 21vh;
         position: relative;
+    }
+    .bottom_section_main_container{
+        height: 80vh;
     }
 
 }
