@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 :root{
 	--fontSize : 2vw;
 }
@@ -87,11 +87,30 @@ label{
     background: #000;
     position: absolute;
     height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     z-index: 100;
+    display: flex;
+    color: white;
 }
 
-.eye {
+.loading_eye h3{
+    font-family: Montserrat;
+    opacity: 0;
+}
+
+.eye_logo {
+    opacity: 0;
+}
+
+.ANC_Logo_Title{
+    transform: translate(30px , -10px) scale(.7);
+}
+
+.Eyeball,
+.Pupil{
     opacity: 0;
 }
 

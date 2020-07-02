@@ -7,7 +7,7 @@
  */
 // let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container')
 // bars = [...document.querySelectorAll('.hamburger_menu_container div')]
-eye = $('.eye')
+eye = $('.eye_logo')
 
 
 /**
@@ -30,32 +30,46 @@ const loading_animation_start = () => {
             duration: 2,
             ease: "power4.out"
         }),
-        loading_eye = document.querySelector('.eye')
-    loading_animation.to(loading_eye, {
-        opacity: 1,
-        ease: "power4.out",
-        duration: .5
-    })
+        loading_eye = document.querySelector('.eye_logo'),
+        loading_headers = [...document.querySelectorAll('.loading_eye h3')],
+        firstAnim = gsap.to(loading_eye, {
+            opacity: 1,
+            ease: "power4.out",
+            duration: .7
+        }),
+        secondAnim = gsap.to(loading_headers , {
+            opacity: 1,
+            ease: "slow",
+            duration: .7
+        })
+    loading_animation.add([firstAnim , secondAnim])
     loading_animation.add(blinking(), "+=.1")
-    loading_animation.add(reset(loading_eye, loading_screen), "+=3")
+    loading_animation.add(reset(loading_eye, loading_screen , loading_headers), "+=3")
 }
 
 const loading_animation_barba = () => {
     let loading_screen = document.querySelector('.loading_eye'),
-        loading_eye = document.querySelector('.eye')
-    loading_animation = gsap.timeline(),
-        loading_animation.set(loading_screen, {
+        loading_eye = document.querySelector('.eye_logo'),
+        loading_headers = [...document.querySelectorAll('.loading_eye h3')],
+        firstAnim = gsap.to(loading_eye, {
+            opacity: 1,
+            ease: "power4.out",
+            duration: .3
+        }),
+        secondAnim = gsap.to(loading_headers , {
+            opacity: 1,
+            ease: "power4.out",
+            duration: .3
+        })
+        loading_animation = gsap.timeline()
+    loading_animation.set(loading_screen, {
             width: "100vw",
             duration: .1,
             ease: "slow"
         }, "-=.1")
-    loading_animation.to(loading_eye, {
-        opacity: 1,
-        ease: "power4.out",
-        duration: .3
-    })
+    loading_animation.add([firstAnim , secondAnim])
     loading_animation.add(blinking(), "+=.1")
-    loading_animation.add(reset(loading_eye, loading_screen), "+=2")
+    loading_animation.add(reset(loading_eye, loading_screen , loading_headers), "+=2")
 }
 
 const blinking = () => {
@@ -68,16 +82,23 @@ const blinking = () => {
         ease: "power4.out"
     })
 
-    tl.to(['.Eyeball', '.Pupil'], {
-        autoAlpha: 0,
-        duration: .2,
-        ease: "power4.out"
-    })
-    tl.to('.ANC_Logo_Title', {
-        scale: 0,
-        duration: .2,
-        ease: "slow"
-    })
+    // tl.to(['.Eyeball', '.Pupil'], {
+    //     autoAlpha: 0,
+    //     duration: .2,
+    //     ease: "power4.out"
+    // })
+    // tl.to('.ANC_Logo_Title', {
+    //     scale: 0,
+    //     duration: .2,
+    //     ease: "slow"
+    // })
+    // tl.to(['.Eyeball' , '.Pupil'] , {
+    //     autoAlpha:0
+    // })
+    tl.to('.ANC_Logo_Title' ,{
+        scale:0,
+        // y:-50
+    }, "-=.5")
     let bottom_lid = gsap.to('.Eye_Part_Bottom_Lid', {
         duration: .2,
         scaleY: 0,
@@ -92,13 +113,19 @@ const blinking = () => {
     return tl
 }
 
-const reset = (loading_eye, loading_screen) => {
-    let tl = gsap.timeline();
-    tl.to(loading_eye, {
+const reset = (loading_eye, loading_screen , loading_headers) => {
+    let tl = gsap.timeline(),
+    firstAnim = gsap.to(loading_eye, {
         opacity: 0,
         ease: "slow",
         duration: 1
     })
+    secondAnim = gsap.to(loading_headers , {
+        opacity: 0,
+        ease: "slow",
+        duration: 1
+    })
+    tl.add([firstAnim , secondAnim])
     tl.to(loading_screen, {
         width: "0vw",
         duration: 1,
@@ -122,7 +149,7 @@ const homeInit = () => {
     let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container'),
     bars = [...document.querySelectorAll('.hamburger_menu_container div')]
 
-    window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
+    window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -25 1233 295')
     slideInContainerFunc(slideInContainer , bars)
 }
 
