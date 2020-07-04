@@ -202,7 +202,10 @@
     .nav_links_container{
         height: 33vh;
         margin-bottom: 7vh;
-    }
+	}
+	.nav_links_container a {
+		color: red;
+	}
 	.arrow_pulsing {
 		top: 28vh;
 		left: 45vw;
