@@ -197,7 +197,7 @@
         height: 0.5vh;
     }
     .bar1.change{
-        transform: rotate(-45deg) translate(0px, 0px);
+        transform: rotate(-45deg) translate(0px, -1px);
     }
     .nav_links_container{
         height: 13vh;
