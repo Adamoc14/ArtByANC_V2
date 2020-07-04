@@ -23,10 +23,10 @@ a:hover {
 	text-decoration: none;
 }
 
-hr {
+/* hr {
     margin: 3em;
     outline: none;
-}
+} */
 
 .wrapper {
 	min-height: 100vh;
@@ -59,7 +59,7 @@ label{
 
 .formContainer input {
     font-size: 1.5vw;
-    padding: 1em 1em;
+    padding: .5em .5em;
     border: none;
     border-radius: 4px;
     transition: .3s ease;

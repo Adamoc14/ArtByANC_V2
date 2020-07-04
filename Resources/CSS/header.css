@@ -23,3 +23,13 @@
     justify-content: space-around;
     margin-right: 2em;
 }
+
+@media (max-width: 600px){
+    .nav{
+        width: 60vw;
+    }
+
+    .header_btn_container img{
+        width: 29vw;
+    }
+}

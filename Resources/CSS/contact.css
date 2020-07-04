@@ -5,12 +5,35 @@
 }
 
 .main_container {
-    padding: 1em 1em;
-    padding-bottom: 2.5em;
+    padding: 4em 0em;
+    padding-bottom: 0em;
+    height: 140vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .contact_container_sm:first-child {
     text-align: center;
+}
+
+.contact_container_sm p{
+    font-weight: 900;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.contact_container_sm span{
+    font-weight: 300;
+    text-decoration: underline;
+    text-transform: none;
+}
+
+.contact_container_sm p, 
+.contact_container_sm span,
+.contact_container_sm h4 ,
+label{
+    font-size: 1.3vw;
 }
 
 .contact_container_sm:nth-child(2) {
@@ -23,7 +46,7 @@
 .email_input,
 .message_input{
     display: flex;
-    width: 40vw;
+    width: 30vw;
     padding-bottom: 1em;
     flex-direction: column;
 }
@@ -39,18 +62,22 @@
 
 .contact_btn{
     margin-top: 1em;
+    font-size: 1.3vw;
 }
 
 @media (max-width: 600px){
-    .contact {
-        min-height: 60vh;
-        height: 85vh;
-    }
-    .contact_container_sm:first-child{
-        height: 20vh;
+    .main_container {
+        height: 70vh;
+        padding-bottom: 2em;
     }
     .name_input, .email_input, .message_input{
         width: 60vw;
+    }
+    .contact_container_sm p, 
+    .contact_container_sm span, 
+    .contact_container_sm h4, 
+    label {
+        font-size: 2.3vw;
     }
     .formContainer input , 
     .formContainer textarea{

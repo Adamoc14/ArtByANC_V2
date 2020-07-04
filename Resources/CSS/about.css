@@ -65,9 +65,42 @@
     justify-content: center;
     margin-top: .5em;
 }
+.about_third_page{
+    justify-content: center;
+}
 
 .about_third_page.page img {
     width: 50vw;
+}
+
+@media (max-width: 600px){
+    .about_first_page{
+        height: 60vh;
+    }
+    .about_second_page{
+        flex-direction:column;
+        justify-content: unset;
+    }
+    .picture_container, .blurb_container {
+        width: 80vw;
+    }
+    .picture_container img {
+        height: 40vh;
+        width: 80vw;
+    }
+    .picture_container {
+        margin-bottom: 2em;
+    }
+    .blurb_container p{
+        font-size: 4vw;
+        text-align: center;
+    }
+    .icon_container{
+        margin-top: 2.5em;
+    }
+    .about_third_page {
+        height: 28vh;
+    }
 }
 
 

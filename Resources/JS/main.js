@@ -5,9 +5,7 @@
 /**
  * Homepage Variables
  */
-// let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container')
-// bars = [...document.querySelectorAll('.hamburger_menu_container div')]
-eye = $('.eye_logo')
+let eye = $('.eye_logo')
 
 
 /**
@@ -37,14 +35,14 @@ const loading_animation_start = () => {
             ease: "power4.out",
             duration: .7
         }),
-        secondAnim = gsap.to(loading_headers , {
+        secondAnim = gsap.to(loading_headers, {
             opacity: 1,
             ease: "slow",
             duration: .7
         })
-    loading_animation.add([firstAnim , secondAnim])
+    loading_animation.add([firstAnim, secondAnim])
     loading_animation.add(blinking(), "+=.1")
-    loading_animation.add(reset(loading_eye, loading_screen , loading_headers), "+=3")
+    loading_animation.add(reset(loading_eye, loading_screen, loading_headers), "+=3")
 }
 
 const loading_animation_barba = () => {
@@ -56,20 +54,20 @@ const loading_animation_barba = () => {
             ease: "power4.out",
             duration: .3
         }),
-        secondAnim = gsap.to(loading_headers , {
+        secondAnim = gsap.to(loading_headers, {
             opacity: 1,
             ease: "power4.out",
             duration: .3
         })
-        loading_animation = gsap.timeline()
+    loading_animation = gsap.timeline()
     loading_animation.set(loading_screen, {
-            width: "100vw",
-            duration: .1,
-            ease: "slow"
-        }, "-=.1")
-    loading_animation.add([firstAnim , secondAnim])
+        width: "100vw",
+        duration: .1,
+        ease: "slow"
+    }, "-=.1")
+    loading_animation.add([firstAnim, secondAnim])
     loading_animation.add(blinking(), "+=.1")
-    loading_animation.add(reset(loading_eye, loading_screen , loading_headers), "+=2")
+    loading_animation.add(reset(loading_eye, loading_screen, loading_headers), "+=2")
 }
 
 const blinking = () => {
@@ -95,8 +93,8 @@ const blinking = () => {
     // tl.to(['.Eyeball' , '.Pupil'] , {
     //     autoAlpha:0
     // })
-    tl.to('.ANC_Logo_Title' ,{
-        scale:0,
+    tl.to('.ANC_Logo_Title', {
+        scale: 0,
         // y:-50
     }, "-=.5")
     let bottom_lid = gsap.to('.Eye_Part_Bottom_Lid', {
@@ -113,19 +111,19 @@ const blinking = () => {
     return tl
 }
 
-const reset = (loading_eye, loading_screen , loading_headers) => {
+const reset = (loading_eye, loading_screen, loading_headers) => {
     let tl = gsap.timeline(),
-    firstAnim = gsap.to(loading_eye, {
+        firstAnim = gsap.to(loading_eye, {
+            opacity: 0,
+            ease: "slow",
+            duration: 1
+        })
+    secondAnim = gsap.to(loading_headers, {
         opacity: 0,
         ease: "slow",
-        duration: 1
+        duration: .2
     })
-    secondAnim = gsap.to(loading_headers , {
-        opacity: 0,
-        ease: "slow",
-        duration: 1
-    })
-    tl.add([firstAnim , secondAnim])
+    tl.add([firstAnim, secondAnim])
     tl.to(loading_screen, {
         width: "0vw",
         duration: 1,
@@ -146,18 +144,14 @@ const reset = (loading_eye, loading_screen , loading_headers) => {
  */
 
 const homeInit = () => {
-    let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container'),
-    bars = [...document.querySelectorAll('.hamburger_menu_container div')]
-
     window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -25 874 295') : eye.attr('viewBox', '-500 -25 1233 295')
     pulsingArrow()
-    slideInContainerFunc(slideInContainer , bars)
-
+    slideInContainerFunc()
 }
 
 const pulsingArrow = () => {
     let arrow = $('.arrow_pulsing')
-    gsap.to(arrow , {
+    gsap.to(arrow, {
         y: 12,
         yoyo: true,
         repeat: -1,
@@ -167,10 +161,54 @@ const pulsingArrow = () => {
     })
 }
 
-const slideInContainerFunc = (slideInContainer , bars) => {
-    bars.map(bar => bar.onclick = () => {
-        slideInContainer.classList.toggle('active');
-    });
+const slideInAnim = (slideOutBar) => {
+    let slide_tl = gsap.timeline({
+        ease: "slow"
+    })
+    slide_tl.to(slideOutBar, {
+        flex: "1 0 20%",
+        duration: 1,
+    })
+    slide_tl.to(slideOutBar, {
+        display: "flex",
+        x: 0,
+        duration: 1,
+    }, "-=1")
+    slide_tl.to(slideOutBar, {
+        display: "flex",
+        rotationY: 0,
+        duration: .8,
+    }, "+=.5")
+}
+
+const slideOutAnim = (slideOutBar) => {
+    let slide_tl = gsap.timeline({
+        ease: "slow"
+    })
+    slide_tl.to(slideOutBar, {
+        rotationY: -90,
+        duration: 1,
+    })
+    slide_tl.to(slideOutBar, {
+        flex: "0 0 0%",
+        display: "none",
+        duration: 1,
+        ease: "slow"
+    }, "-=.5")
+}
+
+const slideInContainerFunc = () => {
+    let hamburger = $('.hamburger_btn').get(0),
+        allBars = [...$('.bar')],
+        slideOutBar = $('.slideContainer').get(0)
+    hamburger.onclick = (() => {
+        allBars.map(bar => bar.classList.toggle('change'))
+        slideOutBar.classList.toggle('slide')
+        if (slideOutBar.classList.contains('slide'))
+            slideInAnim(slideOutBar)
+        else
+            slideOutAnim(slideOutBar)
+    })
 }
 
 const getCategory = (event) => {
@@ -268,10 +306,10 @@ const aboutInit = () => {
 
 const display = (category) => {
     let allPics = [...$('.image_container')],
-    nonActivePics = []
+        nonActivePics = []
     nonActivePics = allPics.filter(pic => pic.dataset.category !== category).map(pic => pic.classList.remove('active'))
-    allPics =allPics.filter(pic => pic.dataset.category === category).map(pic => pic.classList.add('active'))
-    console.log(category , allPics , nonActivePics)
+    allPics = allPics.filter(pic => pic.dataset.category === category).map(pic => pic.classList.add('active'))
+    console.log(category, allPics, nonActivePics)
 
 }
 
@@ -313,7 +351,7 @@ barba.init({
             afterEnter() {
                 loading_animation_start()
                 homeInit()
-                $('.artworks_btn').click((e)=>{
+                $('.artworks_btn').click((e) => {
                     getCategory(e)
                 })
             },
@@ -336,7 +374,7 @@ barba.init({
             namespace: 'artworks',
             afterEnter() {
                 loading_animation_start()
-                $('.filter').click((e)=>{
+                $('.filter').click((e) => {
                     getCategory(e)
                 })
             },
