@@ -1,0 +1,104 @@
+.pic_grid_wrapper {
+	width: 100vw;
+	/* height: 100%; */
+}
+
+.filter_container{
+    margin: 0 auto;
+    width: 86vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: .8em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.filter {
+    color: #fff;
+    font-size: 1.5vw;
+    padding: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    text-align: center;
+}
+
+.filter:hover{
+    cursor:pointer;
+}
+
+.colour_abstracts_filter{
+    background: #72CFF1;
+}
+
+.coffee_art_filter{
+    background: linear-gradient(180deg, #A8815E 0%, rgba(168, 129, 94, 0.94) 100%);
+}
+
+.instadoodles_filter{
+    background: linear-gradient(179.94deg, #C09F4E 10.45%, #78B8A3 25.02%, rgba(204, 172, 109, 0.987692) 40.63%, rgba(198, 146, 110, 0.983192) 51.56%, rgba(178, 124, 108, 0.979292) 65.09%, rgba(192, 159, 78, 0.9) 77.58%, rgba(185, 129, 186, 0.968492) 83.31%, rgba(129, 66, 59, 0.833226) 93.2%, rgba(107, 33, 52, 0.81) 99.96%);
+}
+
+.big_pieces_filter{
+    background: linear-gradient(179.94deg, #C09F4E 22.94%, #000000 68.22%, rgba(185, 129, 186, 0.968492) 99.95%, rgba(107, 33, 52, 0.81) 99.96%);
+}
+
+.grid {
+	height: auto;
+	position: relative;
+	margin: auto;
+	display: grid;
+	width: 90vw;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 2vh;
+	grid-auto-flow: dense;
+	padding: 1em 1em;
+}
+
+.image_container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.image_container:nth-child(even) {
+	grid-row-start: span 2;
+}
+
+.image_container:nth-child(odd) {
+	grid-row-start: span 1;
+}
+
+.image_container:nth-child(4n + 4) {
+	grid-row-start: span 3;
+}
+
+.image_container:nth-child(5n + 5) {
+	grid-row-start: span 2;
+}
+
+.image_container:nth-child(5n + 2) {
+	grid-row-start: span 4;
+}
+
+.image_container:nth-child(6n + 3) {
+	grid-row-start: span 1;
+}
+
+.image_container:nth-child(4n + 2) {
+	grid-row-start: span 3;
+}
+
+.image_container:nth-child(8n + 8) {
+	grid-row-start: span 3;
+}
+
+.image_container img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+

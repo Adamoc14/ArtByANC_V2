@@ -173,6 +173,11 @@ const slideInContainerFunc = (slideInContainer , bars) => {
     });
 }
 
+const getCategory = (event) => {
+    let dataCategory = event.target.dataset.category
+    display(dataCategory)
+}
+
 /**
  * About Page Functions
  */
@@ -257,6 +262,14 @@ const aboutInit = () => {
  * Contact Page Functions
  */
 
+/**
+ * Artworks Page Functions
+ */
+
+const display = (category) => {
+    
+}
+
 //____________________________________________________________________
 
 // Helper Methods
@@ -284,10 +297,10 @@ barba.init({
             loading_animation_barba()
             await delay(1000);
             done();
-        }
-        // async beforeEnter() {
-        //     window.scrollTo(0, 0);
-        // },
+        },
+        async beforeEnter() {
+            window.scrollTo(0, 0);
+        },
     }],
     views: [
         {
@@ -295,6 +308,9 @@ barba.init({
             afterEnter() {
                 loading_animation_start()
                 homeInit()
+                $('.artworks_btn').click((e)=>{
+                    getCategory(e)
+                })
             },
         },
         {
@@ -311,6 +327,12 @@ barba.init({
                 loading_animation_start()
             },
         },
+        {
+            namespace: 'artworks',
+            afterEnter() {
+                loading_animation_start()
+            },
+        }
     ],
 });
 

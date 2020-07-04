@@ -1,0 +1,25 @@
+.header_btn_container{
+    height: 25vh;
+}
+
+.header_btn_container img {
+    width: 20vw;
+    height: 100%;
+}
+
+.header_nav_container {
+    width: 100vw;
+    border: 1px solid #eee;
+    height: 18vh; 
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    justify-content: space-between;
+}
+
+.nav {
+    width: 30vw;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 2em;
+}

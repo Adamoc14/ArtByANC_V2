@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,8 @@
     <link rel="stylesheet" href="Resources/CSS/homepage.css">
     <link rel="stylesheet" href="Resources/CSS/about.css">
     <link rel="stylesheet" href="Resources/CSS/contact.css">
+    <link rel="stylesheet" href="Resources/CSS/header.css">
+    <link rel="stylesheet" href="Resources/CSS/artworks.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/MotionPathPlugin.min.js"></script>
@@ -15,10 +18,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="https://unpkg.com/@barba/core"></script>
     <script defer src="https://apps.elfsight.com/p/platform.js"></script>
-    <script defer src="https://static.elfsight.com/apps/instashow/release/27aff712-1ef7-4d37-adad-d06157590053/app/instagram-feed.js"></script>
+    <script defer
+        src="https://static.elfsight.com/apps/instashow/release/27aff712-1ef7-4d37-adad-d06157590053/app/instagram-feed.js"></script>
     <script defer src="Resources/JS/main.js"></script>
     <title>ArtByANC | Artworks</title>
 </head>
+
 <body data-barba="wrapper">
     <div class="loading_eye">
         <h3 class="loading_title">Welcome to ArtbyANC</h3>
@@ -67,10 +72,85 @@
         <h3>Come in and have a look</h3>
     </div>
     <div class="wrapper" data-barba="container" data-barba-namespace="artworks">
-        hello from artworks page
+        <div class="header_nav_container">
+            <div class="header_btn_container">
+                <a href="index.html"><img src="Resources/Images/General_Images/ArtByANC_Eye.svg" alt=""></a>
+            </div>
+            <div class="nav">
+                <a href="about.html">About</a>
+                <a href="artworks.html">Artworks</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="filter_container">
+            <div class="filter colour_abstracts_filter">Colour Abstracts</div>
+            <div class="filter coffee_art_filter">Coffee Art</div>
+            <div class="filter instadoodles_filter">InstaDoodles</div>
+            <div class="filter big_pieces_filter">Big Pieces</div>
+        </div>
+
+        <div class="pic_grid_wrapper">
+            <div class="grid">
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+                <div class="image_container">
+                    <img src="https://source.unsplash.com/random" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="bottom_section_main_container">
+            <h2>What's New with ArtByANC</h2>
+            <div class="insta_pics_container">
+                <div class="elfsight-app-564f59ce-44ef-4c97-9570-da490157d24b"></div>
+            </div>
+        </div>
     </div>
     <footer>
         ArtByANC &copy; All Rights Reserved 2020
     </footer>
 </body>
+
 </html>
