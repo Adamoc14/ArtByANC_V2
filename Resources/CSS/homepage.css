@@ -201,12 +201,20 @@
         height: 20vh;
     }
     .hamburger_menu_container {
-        height: 4vh;
+        height: 6vh;
+        width: 14vw;
     }
     .bar1, .bar2, .bar3 {
         width: 20px;
         height: 4px;
         margin: 1.3px 0;
+    }
+    .arrow_pulsing{
+        top: 42vh;
+        left: 45vw;
+        width: 9vw;
+        height: 3vh;
+        font-size: 12vw;
     }
     #middle_section_main_container {
         height: 51vh;
