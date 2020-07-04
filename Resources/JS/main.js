@@ -267,7 +267,12 @@ const aboutInit = () => {
  */
 
 const display = (category) => {
-    
+    let allPics = [...$('.image_container')],
+    nonActivePics = []
+    nonActivePics = allPics.filter(pic => pic.dataset.category !== category).map(pic => pic.classList.remove('active'))
+    allPics =allPics.filter(pic => pic.dataset.category === category).map(pic => pic.classList.add('active'))
+    console.log(category , allPics , nonActivePics)
+
 }
 
 //____________________________________________________________________
@@ -331,6 +336,9 @@ barba.init({
             namespace: 'artworks',
             afterEnter() {
                 loading_animation_start()
+                $('.filter').click((e)=>{
+                    getCategory(e)
+                })
             },
         }
     ],
