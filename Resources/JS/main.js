@@ -149,7 +149,7 @@ const homeInit = () => {
     let slideInContainer = document.querySelector('.hamburger_slide_out_menu_container'),
     bars = [...document.querySelectorAll('.hamburger_menu_container div')]
 
-    window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -25 1233 295')
+    window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -25 874 295') : eye.attr('viewBox', '-500 -25 1233 295')
     pulsingArrow()
     slideInContainerFunc(slideInContainer , bars)
 
