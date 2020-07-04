@@ -197,10 +197,10 @@
         height: 0.5vh;
     }
     .bar1.change{
-        transform: rotate(-45deg) translate(0px, -1px);
+        transform: rotate(-45deg) translate(0px, -2px);
     }
     .nav_links_container{
-        height: 13vh;
+        height: 33vh;
         margin-bottom: 7vh;
     }
 	.arrow_pulsing {
