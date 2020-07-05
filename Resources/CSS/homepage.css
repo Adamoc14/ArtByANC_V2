@@ -186,7 +186,11 @@
 @media (max-width: 600px) {
     .main_top_container {
         height: 107vh;
-    }
+	}
+	.main_top_container_sm:first-child {
+		height:37vh;
+		justify-content: unset;
+	}
 	.main_top_container_sm:nth-child(2) img {
         height: 37vh;
     }
