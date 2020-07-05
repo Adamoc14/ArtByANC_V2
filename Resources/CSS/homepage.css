@@ -155,17 +155,11 @@
 	background: #72cff1;
 }
 
-.card:nth-child(2) .front {
-	background: unset;
-}
 
 .card:nth-child(2) .back {
 	background: linear-gradient(180deg, #a8815e 0%, rgba(168, 129, 94, 0.94) 100%);
 }
 
-.card:nth-child(3) .front {
-	background: unset;
-}
 
 .card:nth-child(3) .back {
 	background: linear-gradient(
