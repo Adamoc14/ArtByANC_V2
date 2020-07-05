@@ -247,7 +247,7 @@ const aboutInit = () => {
 
 const paintAbout = () => {
     let paintTL = gsap.timeline({
-        delay: 8.1,
+        delay: 7.5,
         duration: 3
     })
     paintTL.set('#PaintBrush', {
@@ -259,23 +259,29 @@ const paintAbout = () => {
         drawSVG: "0%"
     }, {
         drawSVG: "100%",
-        duration: 60,
+        duration: 2,
         // delay: .4,
         ease: "slow"
     }),
+    firstHalfAnim = gsap.to('#text', {
+        stroke: "#72CFF1",
+        delay: 1,
+        duration: 2,
+        ease: "slow"
+    })
     secondAnim = gsap.to('#text', {
         fill: "#72CFF1",
         duration: 3,
-        delay: 8,
+        delay: 3,
         ease: "slow"
     }),
     thirdAnim = gsap.to('#PaintBrush', {
-        duration: 8,
+        duration: 2,
         motionPath: {
             path: "#text",
         }
     })
-    paintTL.add([firstAnim , secondAnim , thirdAnim])
+    paintTL.add([firstAnim , firstHalfAnim , secondAnim , thirdAnim])
 
 }
 
