@@ -1,10 +1,10 @@
-.header_btn_container{
+/* .header_btn_container{
     height: 25vh;
-}
+} */
 
-.header_btn_container img {
+/* .header_btn_container img {
     height: 100%;
-}
+} */
 
 .header_nav_container {
     width: 100vw;
@@ -12,7 +12,7 @@
     height: 18vh; 
     display: flex;
     align-items: center;
-    padding: 1em;
+    padding: 2em;
     justify-content: space-between;
 }
 
