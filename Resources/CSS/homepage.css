@@ -209,7 +209,7 @@
         height: 0.5vh;
     }
     .bar1.change{
-        transform: rotate(-45deg) translate(-6px, 4px);
+        transform: rotate(-45deg) translate(-5px, 3px);
 	}
 	.bar3.change {
 		transform: rotate(45deg) translate(-5px, -3px);
