@@ -200,7 +200,9 @@
     .hamburger_btn{
         height: 6vh;
 		top: 1vh;
-		left:20vw;
+	}
+	.hamburger_btn.change{
+		left: 22vw;
     }
     .bar {
         width: 7vw;

@@ -202,6 +202,7 @@ const slideInContainerFunc = () => {
         allBars = [...$('.bar')],
         slideOutBar = $('.slideContainer').get(0)
     hamburger.onclick = (() => {
+        hamburger.classList.add('change')
         allBars.map(bar => bar.classList.toggle('change'))
         slideOutBar.classList.toggle('slide')
         if (slideOutBar.classList.contains('slide'))
