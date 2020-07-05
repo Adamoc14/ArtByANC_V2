@@ -371,8 +371,8 @@ barba.init({
             await delay(1000);
             done();
         },
-        async beforeEnter() {
-            window.scrollTo(0, 0);
+        async enter() {
+            document.documentElement.top = 0;
         },
     }],
     views: [
