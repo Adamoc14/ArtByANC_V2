@@ -46,9 +46,12 @@ const loading_animation_start = () => {
 }
 
 const loading_animation_barba = () => {
+    // console.log(loading_title, loading_title2)
+    // if(loading_title === null || loading_title2 === null) return
+    //  target = window.loaction.href,
     let loading_screen = document.querySelector('.loading_eye'),
         loading_eye = document.querySelector('.eye_logo'),
-        loading_headers = [...document.querySelectorAll('.loading_eye h3')],
+        loading_headers = [...document.querySelectorAll('.loading_eye h2')],
         firstAnim = gsap.to(loading_eye, {
             opacity: 1,
             ease: "power4.out",
@@ -60,6 +63,22 @@ const loading_animation_barba = () => {
             duration: .3
         })
     loading_animation = gsap.timeline()
+    // switch(target){
+    //     case "/about.html":
+    //         loading_title.innerHTML = "About"
+    //         break
+    //     case "/contact.html":
+    //         loading_title.innerHTML = "Contact"
+    //         break
+    //     case "/artworks.html":
+    //         loading_title.innerHTML = "Artworks"
+    //         break
+    //     default:
+    //         console.log(target)
+    //         loading_title.innerHTML = "Welcome to ARTBYANC"
+    //         break
+    // }
+    // loading_title2.innerHTML = ""
     loading_animation.set(loading_screen, {
         width: "100vw",
         duration: .1,
@@ -245,45 +264,45 @@ const aboutInit = () => {
 //     gsapArray.map(tag => document.querySelector(`.${tag}`).remove())
 // }
 
-const paintAbout = () => {
-    let paintTL = gsap.timeline({
-        delay: 7.5,
-        duration: 3
-    })
-    paintTL.set('#PaintBrush', {
-        xPercent: -50,
-        yPercent: -70,
-        transformOrigin: "50% 70%"
-    })
-    let firstAnim =gsap.fromTo('#text', {
-        drawSVG: "0%"
-    }, {
-        drawSVG: "100%",
-        duration: 2,
-        // delay: .4,
-        ease: "slow"
-    }),
-    firstHalfAnim = gsap.to('#text', {
-        stroke: "#72CFF1",
-        delay: 1,
-        duration: 2,
-        ease: "slow"
-    })
-    secondAnim = gsap.to('#text', {
-        fill: "#72CFF1",
-        duration: 3,
-        delay: 3,
-        ease: "slow"
-    }),
-    thirdAnim = gsap.to('#PaintBrush', {
-        duration: 2,
-        motionPath: {
-            path: "#text",
-        }
-    })
-    paintTL.add([firstAnim , firstHalfAnim , secondAnim , thirdAnim])
+// const paintAbout = () => {
+//     let paintTL = gsap.timeline({
+//         delay: 7.5,
+//         duration: 3
+//     })
+//     paintTL.set('#PaintBrush', {
+//         xPercent: -50,
+//         yPercent: -70,
+//         transformOrigin: "50% 70%"
+//     })
+//     let firstAnim =gsap.fromTo('#text', {
+//         drawSVG: "0%"
+//     }, {
+//         drawSVG: "100%",
+//         duration: 2,
+//         // delay: .4,
+//         ease: "slow"
+//     }),
+//     firstHalfAnim = gsap.to('#text', {
+//         stroke: "#72CFF1",
+//         delay: 1,
+//         duration: 2,
+//         ease: "slow"
+//     })
+//     secondAnim = gsap.to('#text', {
+//         fill: "#72CFF1",
+//         duration: 3,
+//         delay: 3,
+//         ease: "slow"
+//     }),
+//     thirdAnim = gsap.to('#PaintBrush', {
+//         duration: 2,
+//         motionPath: {
+//             path: "#text",
+//         }
+//     })
+//     paintTL.add([firstAnim , firstHalfAnim , secondAnim , thirdAnim])
 
-}
+// }
 
 // const scrollAbout = () => {
 //     let pages = [...document.querySelectorAll('.page')]
@@ -344,6 +363,10 @@ barba.init({
         name: 'transition-base',
         async leave() {
             const done = this.async();
+            // let loading_title = $('.loading_title').get(0)
+            // loading_title2 = $('.loading_title2').get(0);
+            // // loading_title2.innerHTML = "";
+            // loading_title.innerHTML = "About";
             loading_animation_barba()
             await delay(1000);
             done();

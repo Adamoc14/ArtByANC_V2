@@ -39,8 +39,10 @@
     opacity: 1;
 } */
 
-.about_second_page {
-    padding: 1em 1em;
+.details_Container {
+    display: flex;
+    width: 90vw;
+    padding: 3em 1em;
     justify-content: space-around;
 }
 
