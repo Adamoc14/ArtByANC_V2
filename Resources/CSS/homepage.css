@@ -191,6 +191,9 @@
 		/* height:37vh; */
 		justify-content: unset;
 	}
+	.main_top_container_sm:first-child img{
+		height:37vh;
+	}
 	.main_top_container_sm:nth-child(2) img {
         height: 37vh;
     }
