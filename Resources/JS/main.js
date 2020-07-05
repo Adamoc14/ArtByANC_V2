@@ -245,39 +245,39 @@ const aboutInit = () => {
 //     gsapArray.map(tag => document.querySelector(`.${tag}`).remove())
 // }
 
-// const paintAbout = () => {
-//     let paintTL = gsap.timeline({
-//         delay: 8.1,
-//         duration: 3
-//     })
-//     paintTL.set('#PaintBrush', {
-//         xPercent: -50,
-//         yPercent: -70,
-//         transformOrigin: "50% 70%"
-//     })
-//     let firstAnim =gsap.fromTo('#text', {
-//         drawSVG: "0%"
-//     }, {
-//         drawSVG: "100%",
-//         duration: 60,
-//         // delay: .4,
-//         ease: "slow"
-//     }),
-//     secondAnim = gsap.to('#text', {
-//         fill: "#72CFF1",
-//         duration: 3,
-//         delay: 8,
-//         ease: "slow"
-//     }),
-//     thirdAnim = gsap.to('#PaintBrush', {
-//         duration: 8,
-//         motionPath: {
-//             path: "#text",
-//         }
-//     })
-//     paintTL.add([firstAnim , secondAnim , thirdAnim])
+const paintAbout = () => {
+    let paintTL = gsap.timeline({
+        delay: 8.1,
+        duration: 3
+    })
+    paintTL.set('#PaintBrush', {
+        xPercent: -50,
+        yPercent: -70,
+        transformOrigin: "50% 70%"
+    })
+    let firstAnim =gsap.fromTo('#text', {
+        drawSVG: "0%"
+    }, {
+        drawSVG: "100%",
+        duration: 60,
+        // delay: .4,
+        ease: "slow"
+    }),
+    secondAnim = gsap.to('#text', {
+        fill: "#72CFF1",
+        duration: 3,
+        delay: 8,
+        ease: "slow"
+    }),
+    thirdAnim = gsap.to('#PaintBrush', {
+        duration: 8,
+        motionPath: {
+            path: "#text",
+        }
+    })
+    paintTL.add([firstAnim , secondAnim , thirdAnim])
 
-// }
+}
 
 // const scrollAbout = () => {
 //     let pages = [...document.querySelectorAll('.page')]
@@ -362,7 +362,7 @@ barba.init({
             afterEnter() {
                 loading_animation_start()
                 aboutInit()
-                // paintAbout();
+                paintAbout();
             },
         },
         {
