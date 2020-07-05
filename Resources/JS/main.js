@@ -167,18 +167,18 @@ const slideInAnim = (slideOutBar) => {
     })
     slide_tl.to(slideOutBar, {
         flex: "1 0 20%",
-        duration: 1,
+        duration: .2,
     })
     slide_tl.to(slideOutBar, {
         display: "flex",
         x: 0,
-        duration: 1,
+        duration: .2,
     }, "-=1")
     slide_tl.to(slideOutBar, {
         display: "flex",
         rotationY: 0,
         duration: .8,
-    }, "+=.5")
+    }, "+=.1")
 }
 
 const slideOutAnim = (slideOutBar) => {
