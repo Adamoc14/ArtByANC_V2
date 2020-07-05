@@ -212,7 +212,7 @@
         transform: rotate(-45deg) translate(0px, 5px);
 	}
 	.bar3.change {
-		transform: rotate(45deg) translate(-9px, -4px);
+		transform: rotate(45deg) translate(-9px, 4px);
 	}
     .nav_links_container{
 		height: 13vh;
