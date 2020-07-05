@@ -74,6 +74,9 @@
 }
 
 @media (max-width: 600px){
+    .about{
+        height: 280vh;
+    }
     .about_first_page{
         height: 60vh;
     }
@@ -99,7 +102,7 @@
         margin-top: 2.5em;
     }
     .about_third_page {
-        height: 28vh;
+        height: 45vh;
     }
 }
 
