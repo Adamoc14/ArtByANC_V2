@@ -1,11 +1,10 @@
-body{
-	overflow-x: hidden;
-}
+
 .main_top_container {
 	display: flex;
 	width: 100vw;
 	height: 100vh;
 	perspective: 1500px;
+	overflow: hidden;
 	perspective-origin: 0% 50%;
 }
 
