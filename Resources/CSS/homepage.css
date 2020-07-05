@@ -203,6 +203,7 @@
 	}
 	.hamburger_btn.change{
 		left: 28vw;
+		top: 0vh;
     }
     .bar {
         width: 7vw;
