@@ -200,7 +200,8 @@
         transform: rotate(-45deg) translate(0px, -2px);
     }
     .nav_links_container{
-        height: 13vh;
+		height: 13vh;
+		background: blue;
         margin-bottom: 7vh;
 	}
 	.nav_links_container a {
