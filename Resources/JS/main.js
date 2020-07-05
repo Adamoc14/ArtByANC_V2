@@ -41,7 +41,7 @@ const loading_animation_start = () => {
             duration: .7
         })
     loading_animation.add([firstAnim, secondAnim])
-    loading_animation.add(blinking(), "+=.1")
+    loading_animation.add(blinking(), "+=.01")
     loading_animation.add(reset(loading_eye, loading_screen, loading_headers), "+=3")
 }
 
