@@ -66,6 +66,9 @@ label{
 }
 
 @media (max-width: 600px){
+    .contact {
+        height: 175vh;
+    }ß
     .main_container {
         height: 70vh;
         padding-bottom: 2em;
