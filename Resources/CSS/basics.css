@@ -98,6 +98,7 @@ label{
 
 .loading_eye h2{
     font-family: Montserrat;
+    font-weight: bolder;
     font-style:italic;
     opacity: 0;
 }
