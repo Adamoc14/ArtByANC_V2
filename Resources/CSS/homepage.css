@@ -185,6 +185,9 @@
 
 /* Media Queries */
 @media (max-width: 600px) {
+	.wrapper{
+		height: 215vh;
+	}
     .main_top_container {
         height: 37vh;
 	}
@@ -228,17 +231,17 @@
 		font-size: 12vw;
 	}
 	#middle_section_main_container {
-		height: 51vh;
-		margin-top: 7em;
+		height: 83vh;
+		margin-top: 2em;
 	}
 
 	.middle_section_main_container_sm {
 		flex-wrap: wrap;
-		height: 64vh;
+    	height: 81vh;
 	}
 	.card {
-		width: 32vw;
-		height: 26vh;
+		width: 41vw;
+		height: 34vh;
 		position: relative;
 	}
 	.bottom_section_main_container {
