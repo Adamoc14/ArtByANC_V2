@@ -74,7 +74,7 @@
 }
 
 @media (max-width: 600px){
-    .about{
+    .wrapper{
         height: 200vh;
     }
     .about_first_page{
