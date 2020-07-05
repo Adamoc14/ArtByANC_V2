@@ -202,14 +202,14 @@
 		top: .5vh;
 	}
 	.hamburger_btn.change{
-		left: 31vw;
+		left: 28vw;
     }
     .bar {
         width: 7vw;
         height: 0.5vh;
     }
     .bar1.change{
-        transform: rotate(-45deg) translate(-6px, -4px);
+        transform: rotate(-45deg) translate(-6px, 4px);
 	}
 	.bar3.change {
 		transform: rotate(45deg) translate(-5px, -3px);
