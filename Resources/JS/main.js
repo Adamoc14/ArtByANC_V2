@@ -29,19 +29,19 @@ const loading_animation_start = () => {
             ease: "power4.out"
         }),
         loading_eye = document.querySelector('.eye_logo'),
-        loading_headers = [...document.querySelectorAll('.loading_eye h3')],
+        loading_headers = [...document.querySelectorAll('.loading_eye h2')],
         firstAnim = gsap.to(loading_eye, {
             opacity: 1,
             ease: "power4.out",
-            duration: .7
+            duration: .2
         }),
         secondAnim = gsap.to(loading_headers, {
             opacity: 1,
             ease: "slow",
-            duration: .7
+            duration: .2
         })
     loading_animation.add([firstAnim, secondAnim])
-    loading_animation.add(blinking(), "+=.01")
+    loading_animation.add(blinking(), "+=.1")
     loading_animation.add(reset(loading_eye, loading_screen, loading_headers), "+=3")
 }
 
