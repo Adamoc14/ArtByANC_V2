@@ -107,6 +107,9 @@
 
 
 @media (max-width: 600px){
+	.wrapper {
+		height: 605vh;
+	}
 	.filter_container{
 		width: 85vw;
 	}
