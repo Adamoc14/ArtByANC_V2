@@ -199,20 +199,20 @@
     }
     .hamburger_btn{
         height: 6vh;
-		top: 1vh;
+		top: .5vh;
 	}
 	.hamburger_btn.change{
-		left: 25vw;
+		left: 31vw;
     }
     .bar {
         width: 7vw;
         height: 0.5vh;
     }
     .bar1.change{
-        transform: rotate(-45deg) translate(0px, 5px);
+        transform: rotate(-45deg) translate(-6px, -4px);
 	}
 	.bar3.change {
-		transform: rotate(45deg) translate(-9px, 0px);
+		transform: rotate(45deg) translate(-5px, -3px);
 	}
     .nav_links_container{
 		height: 13vh;
