@@ -58,9 +58,12 @@
 .blurb_container p {
     font-size: 1.5vw;
 }
-.about_hr{
-    margin:1em;
+
+.about_hr {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
+
 
 .icon_container {
     display: flex;
