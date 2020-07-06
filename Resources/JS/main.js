@@ -212,6 +212,7 @@ const firebaseSend = databaseStorage => {
     document.querySelector('.email').value = ""
     document.querySelector('.message').value = ""
     window.location.href = "https://artbyanc.netlify.app/contact.html"
+    $("html, body").animate({ scrollTop: 0 }, "fast");
 }
 
 const gatherInputs = form => {
