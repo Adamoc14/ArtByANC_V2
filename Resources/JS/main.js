@@ -40,9 +40,6 @@ const loading_animation_start = () => {
             ease: "slow",
             duration: .2
         })
-    loading_animation.set(loading_screen, {
-        zIndex: 100
-    })
     loading_animation.add([firstAnim, secondAnim])
     loading_animation.add(blinking(), "+=.1")
     loading_animation.add(reset(loading_eye, loading_screen, loading_headers), "+=3")
@@ -80,19 +77,20 @@ const reset = (loading_eye, loading_screen, loading_headers) => {
         firstAnim = gsap.to(loading_eye, {
             opacity: 0,
             ease: "slow",
-            duration: 1
+            duration: 3
         })
     secondAnim = gsap.to(loading_headers, {
         opacity: 0,
-        ease: "slow",
+        ease: "power1.out",
         duration: .2
     })
+    
     tl.add([firstAnim, secondAnim])
-    tl.to(loading_screen, {
-        zIndex: -1,
-        duration: .1,
+    tl.to(loading_screen , {
+        width: 0,
+        left:0,
         ease: "slow"
-    }, "+=.1")
+    } , "+=.5")
     return tl;
 }
 
@@ -180,85 +178,7 @@ const getCategory = (event) => {
 
 const aboutInit = () => {
     console.log('We have lift off ')
-    // let horizontalscrollAnim
-    // cleanGSAP()
-    // if(typeof horizontalscrollAnim === "undefined") {
-    //     scrollAbout();
-    // }
-    // window.dispatchEvent(new Event('resize'));
-    // ScrollTrigger.refresh()
 }
-
-// const cleanGSAP = () => {
-//     const allClasses = [...document.querySelectorAll('[class]')]
-//     let gsapArray = []
-//     if(allClasses.length <= 81) return
-//     for (var i = 0; i < allClasses.length; i++) {
-//         if (/gsap-/.test(allClasses[i].className)) {
-//             gsapArray.push(allClasses[i].className);
-//         } else 
-//             break
-//     }
-//     gsapArray.map(tag => document.querySelector(`.${tag}`).remove())
-// }
-
-// const paintAbout = () => {
-//     let paintTL = gsap.timeline({
-//         delay: 7.5,
-//         duration: 3
-//     })
-//     paintTL.set('#PaintBrush', {
-//         xPercent: -50,
-//         yPercent: -70,
-//         transformOrigin: "50% 70%"
-//     })
-//     let firstAnim =gsap.fromTo('#text', {
-//         drawSVG: "0%"
-//     }, {
-//         drawSVG: "100%",
-//         duration: 2,
-//         // delay: .4,
-//         ease: "slow"
-//     }),
-//     firstHalfAnim = gsap.to('#text', {
-//         stroke: "#72CFF1",
-//         delay: 1,
-//         duration: 2,
-//         ease: "slow"
-//     })
-//     secondAnim = gsap.to('#text', {
-//         fill: "#72CFF1",
-//         duration: 3,
-//         delay: 3,
-//         ease: "slow"
-//     }),
-//     thirdAnim = gsap.to('#PaintBrush', {
-//         duration: 2,
-//         motionPath: {
-//             path: "#text",
-//         }
-//     })
-//     paintTL.add([firstAnim , firstHalfAnim , secondAnim , thirdAnim])
-
-// }
-
-// const scrollAbout = () => {
-//     let pages = [...document.querySelectorAll('.page')]
-//     horizontalAnim = gsap.to(pages, {
-//         xPercent: -100 * (pages.length - 1),
-//         ease: "none",
-//         scrollTrigger: {
-//             trigger: ".about",
-//             pin: true,
-//             markers: true,
-//             scrub: 1,
-//             snap: 1 / (pages.length - 1),
-//             // base vertical scrolling on how wide the container is so it feels more natural.
-//             end: () => "+=" + document.querySelector(".about").offsetWidth
-//         }
-//     });
-// }
-
 
 /**
  * Contact Page Functions
@@ -294,8 +214,6 @@ const firebaseSend = databaseStorage => {
     window.location.href = "https://artbyanc.netlify.app/contact.html"
 }
 
-
-
 const gatherInputs = form => {
     let inputs = [...$(form).find('.input')],
         validatedVerdict = validateInputs(inputs)
@@ -327,7 +245,7 @@ const display = (category) => {
         nonActivePics = []
     nonActivePics = allPics.filter(pic => pic.dataset.category !== category).map(pic => pic.classList.remove('active'))
     allPics = allPics.filter(pic => pic.dataset.category === category).map(pic => pic.classList.add('active'))
-    console.log(category, allPics, nonActivePics)
+    // console.log(category, allPics, nonActivePics)
 
 }
 
@@ -337,7 +255,6 @@ const fillModal = (e) => {
     $(popUpModal.children[0].children[0]).attr('src', e.target.src)
     popUpModal.style.display = "block";
 }
-
 
 /**
  * Shop Page Funcitons
@@ -386,14 +303,6 @@ const delay = (ms) => {
 
 // Initialization Methods
 loading_animation_start()
-// window.onload = (() => {
-//     $("html, body").animate({ scrollTop: 0 }, "fast");
-//     loading_animation_start()
-// })
-// $(document).ready(() => {
-//     $("html, body").animate({ scrollTop: 0 }, "fast");
-//     loading_animation_start()
-// })
 
 barba.init({
     sync: true,
@@ -402,27 +311,17 @@ barba.init({
         async leave() {
             const done = this.async();
             $("html, body").animate({ scrollTop: 0 }, "fast");
-            let loading_screen = document.querySelector('.loading_eye')
-            // $(loading_screen).css('zIndex' , '100')
-            // let loading_title = $('.loading_title').get(0)
-            // loading_title2 = $('.loading_title2').get(0);
-            // // loading_title2.innerHTML = "";
-            // loading_title.innerHTML = "About";
-            // loading_animation_start()
             await delay(1000);
             done();
         },
-        async enter() {
-            $("html, body").animate({ scrollTop: 0 }, "fast");
-            // document.documentElement.top = 0;
-            // window.scroll(0,0)
-        },
+        async beforeOnce(){
+            loading_animation_start()
+        }
     }],
     views: [
         {
             namespace: 'home',
             afterEnter() {
-                // loading_animation_start()
                 homeInit()
                 $('.artworks_btn').click((e) => {
                     getCategory(e)
@@ -432,14 +331,12 @@ barba.init({
         {
             namespace: 'about',
             afterEnter() {
-                // loading_animation_start()
                 aboutInit()
             },
         },
         {
             namespace: 'contact',
             afterEnter() {
-                // loading_animation_start()
                 $('.contact_btn').click((e) => {
                     var form = $('.formContainer').get(0)
                     var isValid = gatherInputs(form)
@@ -453,7 +350,6 @@ barba.init({
         {
             namespace: 'artworks',
             afterEnter() {
-                // loading_animation_start()
                 window.onclick = ((e) => {
                     console.log(e,)
                     if (e.target === $('.pic_modal').get(0) || e.target === $('.close_btn').get(0)) {
@@ -471,7 +367,6 @@ barba.init({
         {
             namespace: 'shop',
             afterEnter() {
-                // loading_animation_start()
                 shopInit()
                 fillCart()
             },
