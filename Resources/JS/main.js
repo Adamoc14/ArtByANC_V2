@@ -211,7 +211,7 @@ const firebaseSend = databaseStorage => {
     document.querySelector('.name').value = ""
     document.querySelector('.email').value = ""
     document.querySelector('.message').value = ""
-    window.location.href = "https://artbyanc.netlify.app/contact.html"
+    // window.location.href = "https://artbyanc.netlify.app/contact.html"
     $("html, body").animate({ scrollTop: 0 }, "fast");
 }
 
