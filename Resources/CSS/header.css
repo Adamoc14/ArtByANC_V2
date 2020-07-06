@@ -17,7 +17,7 @@
 }
 
 .nav {
-    width: 30vw;
+    width: 38vw;
     display: flex;
     justify-content: space-around;
     margin-right: 2em;
@@ -27,8 +27,12 @@
     .nav{
         width: 60vw;
     }
+    .header_nav_container {
+        height: 22vh;
+        flex-direction: column;
+    }
 
     .header_btn_container img{
-        width: 29vw;
+        width: 67vw;
     }
 }

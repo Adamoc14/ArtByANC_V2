@@ -64,12 +64,16 @@
     margin-bottom: 1em;
 }
 
-
 .icon_container {
     display: flex;
-    justify-content: center;
     margin-top: .5em;
+    padding-bottom: 2em;
 }
+
+.icon_container a {
+    margin-right: 0.2em;
+}
+
 .about_third_page{
     justify-content: center;
 }

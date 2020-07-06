@@ -334,7 +334,7 @@ const display = (category) => {
     let allPics = [...$('.image_container')],
         nonActivePics = []
     nonActivePics = allPics.filter(pic => pic.dataset.category !== category).map(pic => pic.classList.remove('active'))
-    allPics = allPics.filter(pic => pic.dataset.category === category).map(pic => pic.classList.add('active'))
+    allPics = allPics.filter(pic => pic.dataset.category === category).map(pic => pic.classList.toggle('active'))
     console.log(category, allPics, nonActivePics)
 
 }
@@ -389,9 +389,8 @@ barba.init({
         {
             namespace: 'about',
             afterEnter() {
-                loading_animation_start()
+                // loading_animation_start()
                 aboutInit()
-                paintAbout();
             },
         },
         {
@@ -404,6 +403,8 @@ barba.init({
             namespace: 'artworks',
             afterEnter() {
                 loading_animation_start()
+                let allPics = [...$('.image_container')]
+                allPics.map(pic => pic.classList.contains('active') !== true ? pic.classList.add('active') : false )
                 $('.filter').click((e) => {
                     getCategory(e)
                 })
