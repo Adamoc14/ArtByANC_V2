@@ -326,6 +326,60 @@ const aboutInit = () => {
  * Contact Page Functions
  */
 
+const firebaseInit = () => {
+    //Firebase
+    var firebaseConfig = {
+        apiKey: "AIzaSyBvlJUyDmBHNfEjwkZ_Auf8Jr1mbXDdP7k",
+        authDomain: "artbyanc-70f23.firebaseapp.com",
+        databaseURL: "https://artbyanc-70f23.firebaseio.com",
+        projectId: "artbyanc-70f23",
+        storageBucket: "artbyanc-70f23.appspot.com",
+        messagingSenderId: "687386013503",
+        appId: "1:687386013503:web:b7e75afa311b99fae06d8a",
+        measurementId: "G-PD1GXNZL2G"
+    }
+    firebase.initializeApp(firebaseConfig)
+    var databaseStorage = firebase.database().ref().child('emails')
+    firebaseSend(databaseStorage)
+}
+
+const firebaseSend = databaseStorage => {
+    var email = {
+        name: $('.name').val(),
+        email: $('.email').val(),
+        message: $('.message').val(),
+    }
+    databaseStorage.push(email)
+    document.querySelector('.name').value = ""
+    document.querySelector('.email').value = ""
+    document.querySelector('.message').value = ""
+    window.location.href = "https://artbyanc.netlify.app/contact.html"
+}
+
+
+
+const gatherInputs = form => {
+    let inputs = [...$(form).find('.input')],
+        validatedVerdict = validateInputs(inputs)
+    return validatedVerdict
+}
+
+const validateInputs = inputs => {
+    console.log(typeof inputs, inputs)
+    let requiredFields = {
+        empty: "",
+        standard_length: 10,
+    },
+        validatedInputs = inputs.map(formInput =>
+            $(formInput).val() !== requiredFields.empty
+            && $(formInput).val().length >= requiredFields.standard_length
+        )
+    if (validatedInputs.includes(false))
+        return false
+    else
+        return true
+}
+
 /**
  * Artworks Page Functions
  */
@@ -334,15 +388,15 @@ const display = (category) => {
     let allPics = [...$('.image_container')],
         nonActivePics = []
     nonActivePics = allPics.filter(pic => pic.dataset.category !== category).map(pic => pic.classList.remove('active'))
-    allPics = allPics.filter(pic => pic.dataset.category === category).map(pic => pic.classList.toggle('active'))
+    allPics = allPics.filter(pic => pic.dataset.category === category).map(pic => pic.classList.add('active'))
     console.log(category, allPics, nonActivePics)
 
 }
 
-const fillModal = (e)=> {
+const fillModal = (e) => {
     let popUpModal = $('.pic_modal').get(0)
-    console.log(popUpModal , $(popUpModal.children[0].children[0]).attr('src') , e.target.src)
-    $(popUpModal.children[0].children[0]).attr('src' ,e.target.src)
+    console.log(popUpModal, $(popUpModal.children[0].children[0]).attr('src'), e.target.src)
+    $(popUpModal.children[0].children[0]).attr('src', e.target.src)
     popUpModal.style.display = "block";
 }
 
@@ -352,7 +406,35 @@ const fillModal = (e)=> {
  */
 
 const shopInit = () => {
-    Paddle.Setup({ vendor: 32931 });
+    // Paddle.Setup({ vendor: 32931 });
+}
+
+const fillCart = () => {
+    $('.purchase_btn').click((e) => {
+        e.preventDefault()
+        let id = e.target.dataset.id,
+            price = e.target.dataset.price
+        product = { price: id, quantity: 1 }
+        arrayofprices = []
+        arrayofprices.push(product)
+        console.log(id, price, arrayofprices)
+        stripeCheckout(arrayofprices)
+    })
+}
+
+const stripeCheckout = arrayofprices => {
+    var stripe = Stripe('pk_test_XRkwTYQW3fRAtXjzPo2guqET');
+    stripe.redirectToCheckout({
+        lineItems: arrayofprices,
+        mode: 'payment',
+        successUrl: 'https://artbyanc.netflify.app/shop.html',
+        cancelUrl: 'https://artbyanc.netflify.app/shop.html',
+    }).then(function (result) {
+        console.log(result)
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer
+        // using `result.error.message`.
+    });
 }
 
 //____________________________________________________________________
@@ -389,6 +471,7 @@ barba.init({
         },
         async enter() {
             document.documentElement.top = 0;
+            window.scroll(0,0)
         },
     }],
     views: [
@@ -413,6 +496,14 @@ barba.init({
             namespace: 'contact',
             afterEnter() {
                 loading_animation_start()
+                $('.contact_btn').click((e) => {
+                    var form = $('.formContainer').get(0)
+                    var isValid = gatherInputs(form)
+                    if (!isValid)
+                        e.preventDefault()
+                    firebaseInit()
+                })
+
             },
         },
         {
@@ -420,26 +511,25 @@ barba.init({
             afterEnter() {
                 loading_animation_start()
                 window.onclick = ((e) => {
-                    console.log(e , )
-                    if(e.target === $('.pic_modal').get(0) || e.target === $('.close_btn').get(0)){
+                    console.log(e,)
+                    if (e.target === $('.pic_modal').get(0) || e.target === $('.close_btn').get(0)) {
                         $('.pic_modal').css('display', 'none')
                     }
                 })
-                let allPics = [...$('.image_container')]
-                $('.image_container').click((e)=>{
+                $('.image_container').click((e) => {
                     fillModal(e)
                 })
-                allPics.map(pic => pic.classList.contains('active') !== true ? pic.classList.add('active') : false )
                 $('.filter').click((e) => {
                     getCategory(e)
                 })
             },
-        }
+        },
         {
             namespace: 'shop',
             afterEnter() {
                 loading_animation_start()
                 shopInit()
+                fillCart()
             },
         },
     ],

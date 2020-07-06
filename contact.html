@@ -18,9 +18,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/MotionPathPlugin.min.js"></script>
     <script src="Resources/JS/DrawSVGPlugin.min.js"></script>
     <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="https://unpkg.com/@barba/core"></script>
     <script defer src="https://apps.elfsight.com/p/platform.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
     <script defer src="https://static.elfsight.com/apps/instashow/release/27aff712-1ef7-4d37-adad-d06157590053/app/instagram-feed.js"></script>
     <script defer src="Resources/JS/main.js"></script>
     <title>ArtByANC | Homepage</title>
@@ -95,15 +98,15 @@
                     <div class="formContainer">
                         <div class="name_input">
                             <label for="name">Name</label>
-                            <input type="text" name="" id="">
+                            <input type="text" class="input name" name="" id="">
                         </div>
                         <div class="email_input">
                             <label for="email">Email</label>
-                            <input type="email" name="" id="">
+                            <input type="email" class="input email" name="" id="">
                         </div>
                         <div class="message_input">
                             <label for="message">Message</label>
-                            <textarea name="" id="message" autofocus></textarea>
+                            <textarea name="" class="input message" id="message" autofocus></textarea>
                         </div>
                         <a class="art_by_anc_default_btn contact_btn" href="#">Submit<a>
                     </div>
