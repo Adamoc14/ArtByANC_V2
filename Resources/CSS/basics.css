@@ -36,9 +36,21 @@ img{
     margin: 3em;
     outline: none;
 } */
+.barba-container {
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+}
 
 .wrapper {
-	min-height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    background: #fff;
+    z-index: 1;
 }
 
 input[type=text],
@@ -100,7 +112,7 @@ label{
     align-items: center;
     justify-content: center;
     width:100vw;
-    z-index: 100;
+    z-index: -1;
     display: flex;
     color: white;
 }

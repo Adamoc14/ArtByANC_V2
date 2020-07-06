@@ -40,53 +40,12 @@ const loading_animation_start = () => {
             ease: "slow",
             duration: .2
         })
+    loading_animation.set(loading_screen, {
+        zIndex: 100
+    })
     loading_animation.add([firstAnim, secondAnim])
     loading_animation.add(blinking(), "+=.1")
     loading_animation.add(reset(loading_eye, loading_screen, loading_headers), "+=3")
-}
-
-const loading_animation_barba = () => {
-    // console.log(loading_title, loading_title2)
-    // if(loading_title === null || loading_title2 === null) return
-    //  target = window.loaction.href,
-    let loading_screen = document.querySelector('.loading_eye'),
-        loading_eye = document.querySelector('.eye_logo'),
-        loading_headers = [...document.querySelectorAll('.loading_eye h2')],
-        firstAnim = gsap.to(loading_eye, {
-            opacity: 1,
-            ease: "power4.out",
-            duration: .3
-        }),
-        secondAnim = gsap.to(loading_headers, {
-            opacity: 1,
-            ease: "power4.out",
-            duration: .3
-        })
-    loading_animation = gsap.timeline()
-    // switch(target){
-    //     case "/about.html":
-    //         loading_title.innerHTML = "About"
-    //         break
-    //     case "/contact.html":
-    //         loading_title.innerHTML = "Contact"
-    //         break
-    //     case "/artworks.html":
-    //         loading_title.innerHTML = "Artworks"
-    //         break
-    //     default:
-    //         console.log(target)
-    //         loading_title.innerHTML = "Welcome to ARTBYANC"
-    //         break
-    // }
-    // loading_title2.innerHTML = ""
-    loading_animation.set(loading_screen, {
-        width: "100vw",
-        duration: .1,
-        ease: "slow"
-    }, "-=.1")
-    loading_animation.add([firstAnim, secondAnim])
-    loading_animation.add(blinking(), "+=.1")
-    loading_animation.add(reset(loading_eye, loading_screen, loading_headers), "+=2")
 }
 
 const blinking = () => {
@@ -98,20 +57,6 @@ const blinking = () => {
         duration: 2,
         ease: "power4.out"
     })
-
-    // tl.to(['.Eyeball', '.Pupil'], {
-    //     autoAlpha: 0,
-    //     duration: .2,
-    //     ease: "power4.out"
-    // })
-    // tl.to('.ANC_Logo_Title', {
-    //     scale: 0,
-    //     duration: .2,
-    //     ease: "slow"
-    // })
-    // tl.to(['.Eyeball' , '.Pupil'] , {
-    //     autoAlpha:0
-    // })
     tl.to('.ANC_Logo_Title', {
         scale: 0,
         // y:-50
@@ -144,17 +89,10 @@ const reset = (loading_eye, loading_screen, loading_headers) => {
     })
     tl.add([firstAnim, secondAnim])
     tl.to(loading_screen, {
-        width: "0vw",
-        duration: 1,
+        zIndex: -1,
+        duration: .1,
         ease: "slow"
-    }, "+=.5")
-    // tl.to(loading_screen, {
-    //     duration: 1.2,
-    //     width: "0%",
-    //     right: "0%",
-    //     ease: "circ.out",
-    // }, "+=3")
-
+    }, "+=.1")
     return tl;
 }
 
@@ -447,13 +385,10 @@ const delay = (ms) => {
 //____________________________________________________________________
 
 // Initialization Methods
-// $(document).ready(() => {
-//     // window.matchMedia("(max-width: 600px)").matches ? eye.attr('viewBox', '-320 -600 874 1680') : eye.attr('viewBox', '-500 -200 1233 935')
-//     // homeInit()
-//     slideInContainerFunc()
-//     // setTimeout(() => paintAbout(), 12000)
-//     // scrollAbout()
-// })
+$(document).ready(() => {
+    $("html, body").animate({ scrollTop: 0 }, "fast");
+    loading_animation_start()
+})
 
 barba.init({
     sync: true,
@@ -461,24 +396,28 @@ barba.init({
         name: 'transition-base',
         async leave() {
             const done = this.async();
+            $("html, body").animate({ scrollTop: 0 }, "fast");
+            let loading_screen = document.querySelector('.loading_eye')
+            // $(loading_screen).css('zIndex' , '100')
             // let loading_title = $('.loading_title').get(0)
             // loading_title2 = $('.loading_title2').get(0);
             // // loading_title2.innerHTML = "";
             // loading_title.innerHTML = "About";
-            loading_animation_barba()
+            // loading_animation_start()
             await delay(1000);
             done();
         },
         async enter() {
-            document.documentElement.top = 0;
-            window.scroll(0,0)
+            $("html, body").animate({ scrollTop: 0 }, "fast");
+            // document.documentElement.top = 0;
+            // window.scroll(0,0)
         },
     }],
     views: [
         {
             namespace: 'home',
             afterEnter() {
-                loading_animation_start()
+                // loading_animation_start()
                 homeInit()
                 $('.artworks_btn').click((e) => {
                     getCategory(e)
@@ -488,14 +427,14 @@ barba.init({
         {
             namespace: 'about',
             afterEnter() {
-                loading_animation_start()
+                // loading_animation_start()
                 aboutInit()
             },
         },
         {
             namespace: 'contact',
             afterEnter() {
-                loading_animation_start()
+                // loading_animation_start()
                 $('.contact_btn').click((e) => {
                     var form = $('.formContainer').get(0)
                     var isValid = gatherInputs(form)
@@ -509,7 +448,7 @@ barba.init({
         {
             namespace: 'artworks',
             afterEnter() {
-                loading_animation_start()
+                // loading_animation_start()
                 window.onclick = ((e) => {
                     console.log(e,)
                     if (e.target === $('.pic_modal').get(0) || e.target === $('.close_btn').get(0)) {
@@ -527,7 +466,7 @@ barba.init({
         {
             namespace: 'shop',
             afterEnter() {
-                loading_animation_start()
+                // loading_animation_start()
                 shopInit()
                 fillCart()
             },
