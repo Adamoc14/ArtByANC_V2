@@ -99,7 +99,7 @@ label{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 0vw;
+    width: 100vw;
     z-index: 100;
     display: flex;
     color: white;

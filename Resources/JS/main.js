@@ -389,7 +389,7 @@ barba.init({
         {
             namespace: 'about',
             afterEnter() {
-                // loading_animation_start()
+                loading_animation_start()
                 aboutInit()
             },
         },
