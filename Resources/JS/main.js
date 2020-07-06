@@ -385,10 +385,11 @@ const delay = (ms) => {
 //____________________________________________________________________
 
 // Initialization Methods
-window.onload = (() => {
-    $("html, body").animate({ scrollTop: 0 }, "fast");
-    loading_animation_start()
-})
+loading_animation_start()
+// window.onload = (() => {
+//     $("html, body").animate({ scrollTop: 0 }, "fast");
+//     loading_animation_start()
+// })
 // $(document).ready(() => {
 //     $("html, body").animate({ scrollTop: 0 }, "fast");
 //     loading_animation_start()
