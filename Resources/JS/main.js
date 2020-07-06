@@ -339,6 +339,22 @@ const display = (category) => {
 
 }
 
+const fillModal = (e)=> {
+    let popUpModal = $('.pic_modal').get(0)
+    console.log(popUpModal , $(popUpModal.children[0].children[0]).attr('src') , e.target.src)
+    $(popUpModal.children[0].children[0]).attr('src' ,e.target.src)
+    popUpModal.style.display = "block";
+}
+
+
+/**
+ * Shop Page Funcitons
+ */
+
+const shopInit = () => {
+    Paddle.Setup({ vendor: 32931 });
+}
+
 //____________________________________________________________________
 
 // Helper Methods
@@ -403,13 +419,29 @@ barba.init({
             namespace: 'artworks',
             afterEnter() {
                 loading_animation_start()
+                window.onclick = ((e) => {
+                    console.log(e , )
+                    if(e.target === $('.pic_modal').get(0) || e.target === $('.close_btn').get(0)){
+                        $('.pic_modal').css('display', 'none')
+                    }
+                })
                 let allPics = [...$('.image_container')]
+                $('.image_container').click((e)=>{
+                    fillModal(e)
+                })
                 allPics.map(pic => pic.classList.contains('active') !== true ? pic.classList.add('active') : false )
                 $('.filter').click((e) => {
                     getCategory(e)
                 })
             },
         }
+        {
+            namespace: 'shop',
+            afterEnter() {
+                loading_animation_start()
+                shopInit()
+            },
+        },
     ],
 });
 
