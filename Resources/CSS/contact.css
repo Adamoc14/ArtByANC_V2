@@ -70,6 +70,9 @@ label{
         height: 82vh;
         padding: 2em 0em;
     }
+    .contact_btn {
+        font-size: 3vw;
+    }
     .name_input, .email_input, .message_input{
         width: 60vw;
     }
