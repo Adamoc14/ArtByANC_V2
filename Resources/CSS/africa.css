@@ -5,6 +5,16 @@
     margin: 1em;
 }
 
-.africaPiece_input {
+/* .africaPiece_input {
     margin: 1em;
+} */
+
+.name_input, 
+.number_input,
+.address_input,
+.africaPiece_input{
+    display: flex;
+    width: 30vw;
+    padding-bottom: 1em;
+    flex-direction: column;
 }
