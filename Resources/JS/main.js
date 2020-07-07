@@ -22,6 +22,14 @@ let eye = $('.eye_logo')
 /**
  * Global Page Functions
  */
+
+const headerLogoInit = () => {
+    console.log('We have lift off ')
+    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('viewBox', '0 0 303 281') : $('.eye_logo_header').attr('viewBox', '-250 0 703 281')
+    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('width', '84') : $('.eye_logo_header').attr('width', '284')
+    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('height', '51') : $('.eye_logo_header').attr('height', '151')
+}
+
 const loading_animation_start = () => {
     let loading_screen = document.querySelector('.loading_eye'),
         loading_animation = gsap.timeline({
@@ -176,12 +184,7 @@ const getCategory = (event) => {
  * About Page Functions
  */
 
-const aboutInit = () => {
-    console.log('We have lift off ')
-    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('viewBox', '0 0 303 281') : $('.eye_logo_header').attr('viewBox', '-250 0 703 281')
-    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('width', '84') : $('.eye_logo_header').attr('width', '284')
-    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('height', '51') : $('.eye_logo_header').attr('height', '151')
-}
+
 
 /**
  * Contact Page Functions
@@ -335,12 +338,13 @@ barba.init({
         {
             namespace: 'about',
             afterEnter() {
-                aboutInit()
+                headerLogoInit()
             },
         },
         {
             namespace: 'contact',
             afterEnter() {
+                headerLogoInit()
                 $('.contact_btn').click((e) => {
                     var form = $('.formContainer').get(0)
                     var isValid = gatherInputs(form)
@@ -354,6 +358,7 @@ barba.init({
         {
             namespace: 'artworks',
             afterEnter() {
+                headerLogoInit()
                 window.onclick = ((e) => {
                     console.log(e,)
                     if (e.target === $('.pic_modal').get(0) || e.target === $('.close_btn').get(0)) {
@@ -371,6 +376,7 @@ barba.init({
         {
             namespace: 'shop',
             afterEnter() {
+                headerLogoInit()
                 shopInit()
                 fillCart()
             },
