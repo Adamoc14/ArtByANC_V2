@@ -69,9 +69,19 @@ label{
     .main_container {
         height: 82vh;
         padding: 2em 0em;
+        margin-top: 7vh;
+    }
+    .contact_container_sm p {
+        width: 70vw;
+        margin: 0 auto;
+        line-height: 2em;
+        font-weight: 600;
     }
     .contact_btn {
         font-size: 3vw;
+    }
+    .contact_container_sm:nth-child(2){
+        margin-top: 4vh;
     }
     .name_input, .email_input, .message_input{
         width: 60vw;
