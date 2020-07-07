@@ -26,13 +26,10 @@
 @media (max-width: 600px){
     .nav{
         width: 60vw;
+        margin-top: 2em;
     }
     .header_nav_container {
         height: 22vh;
         flex-direction: column;
-    }
-
-    .header_btn_container img{
-        width: 67vw;
     }
 }

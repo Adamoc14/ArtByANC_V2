@@ -178,6 +178,9 @@ const getCategory = (event) => {
 
 const aboutInit = () => {
     console.log('We have lift off ')
+    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('viewBox', '0 0 303 281') : $('.eye_logo_header').attr('viewBox', '-250 0 703 281')
+    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('width', '84') : $('.eye_logo_header').attr('width', '284')
+    window.matchMedia("(max-width: 600px)").matches ? $('.eye_logo_header').attr('height', '51') : $('.eye_logo_header').attr('height', '151')
 }
 
 /**
