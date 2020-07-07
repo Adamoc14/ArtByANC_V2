@@ -78,7 +78,8 @@
     .main_collection_container_m {
         flex-direction: column;
     }
-    .main_collection_container_sm img {
+    .main_collection_container_sm img ,
+    .collection_container img {
         width: 49vw;
     }
     .detailsContainer {
@@ -86,6 +87,12 @@
         width: 70vw;
         align-items: center;
     }
+
+    .collection_container {
+        flex-direction: column;
+        justify-content: unset;
+    }
+
     .popup_code_modal_content{
         height: 30vh;
         width: 83vw;
