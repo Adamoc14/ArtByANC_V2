@@ -414,6 +414,8 @@ barba.init({
         {   
             namespace: 'africa',
             afterEnter() {
+                let urlParams = new URLSearchParams(window.location.search);
+                $('.africaPiece').get(0).value = urlParams.get('piece');
                 $('.africa_btn').click((e) => {
                     page = "africa"
                     var form = $('.formContainer').get(0)
