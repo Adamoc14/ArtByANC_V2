@@ -66,6 +66,13 @@
         color: #fff;
 }
 
+.collection_container {
+    display: flex;
+    width: 80vw;
+    align-items: center;
+    justify-content: space-around;
+}
+
 
 @media (max-width: 600px){
     .main_collection_container_m {
