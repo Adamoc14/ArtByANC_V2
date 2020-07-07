@@ -426,6 +426,11 @@ barba.init({
                         e.preventDefault()
                     firebaseInit()
                 })
+                window.onclick = ((e) => {
+                    if (e.target === $('.thank_you_modal').get(0) || e.target === $('.close_btn').get(0)) {
+                        $('.thank_you_modal').css('display', 'none')
+                    }
+                })
             }
 
         }
