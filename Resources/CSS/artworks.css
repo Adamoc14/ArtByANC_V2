@@ -80,7 +80,7 @@
 }
 
 .image_container:nth-child(5n + 5) {
-	grid-row-start: span 2;
+	grid-row-start: span 1;
 }
 
 /* .image_container:nth-child(5n + 2) {
