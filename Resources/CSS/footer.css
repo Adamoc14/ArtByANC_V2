@@ -27,10 +27,11 @@
     padding: 1em;
     font-style: italic;
     font-weight: 400;
-    background: #F0C368;
+    /* background: #F0C368; */
+    border-top: 1px solid #eee;
 }
 .aoc_footer img {
-    height: 22vh;
+    height: 15vh;
     margin-left: 2em;
 }
 
