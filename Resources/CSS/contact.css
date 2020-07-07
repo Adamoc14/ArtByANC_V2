@@ -7,7 +7,7 @@
 .main_container {
     padding: 4em 0em;
     padding-bottom: 0em;
-    height: 140vh;
+    height: 130vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
