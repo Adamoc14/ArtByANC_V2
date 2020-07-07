@@ -27,6 +27,7 @@
     .nav{
         width: 60vw;
         margin-top: 2em;
+        margin-right: unset;
     }
     .header_nav_container {
         height: 22vh;
