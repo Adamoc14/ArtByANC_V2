@@ -273,14 +273,18 @@ const shopInit = () => {
 
 const fillCart = () => {
     $('.purchase_btn').click((e) => {
-        e.preventDefault()
-        let id = e.target.dataset.id,
-            price = e.target.dataset.price
-        product = { price: id, quantity: 1 }
-        arrayofprices = []
-        arrayofprices.push(product)
-        console.log(id, price, arrayofprices)
-        stripeCheckout(arrayofprices)
+        e.preventDefault();
+        let code = e.target.dataset.code;
+        $('.popup_code_modal').css('display' , 'block')
+        document.querySelector('.code_reveal').innerHTML = code;
+        // e.preventDefault()
+        // let id = e.target.dataset.id,
+        //     price = e.target.dataset.price
+        // product = { price: id, quantity: 1 }
+        // arrayofprices = []
+        // arrayofprices.push(product)
+        // console.log(id, price, arrayofprices)
+        // stripeCheckout(arrayofprices)
     })
 }
 
@@ -360,7 +364,6 @@ barba.init({
             afterEnter() {
                 headerLogoInit()
                 window.onclick = ((e) => {
-                    console.log(e,)
                     if (e.target === $('.pic_modal').get(0) || e.target === $('.close_btn').get(0)) {
                         $('.pic_modal').css('display', 'none')
                     }
@@ -379,6 +382,11 @@ barba.init({
                 headerLogoInit()
                 shopInit()
                 fillCart()
+                window.onclick = ((e) => {
+                    if (e.target === $('.popup_code_modal').get(0) || e.target === $('.close_btn').get(0)) {
+                        $('.popup_code_modal').css('display', 'none')
+                    }
+                })
             },
         },
     ],
