@@ -83,17 +83,17 @@
 	grid-row-start: span 2;
 }
 
-.image_container:nth-child(5n + 2) {
+/* .image_container:nth-child(5n + 2) {
 	grid-row-start: span 4;
-}
+} */
 
 .image_container:nth-child(6n + 3) {
 	grid-row-start: span 1;
 }
 
-.image_container:nth-child(4n + 2) {
+/* .image_container:nth-child(4n + 2) {
 	grid-row-start: span 3;
-}
+} */
 
 .image_container:nth-child(8n + 8) {
 	grid-row-start: span 3;
