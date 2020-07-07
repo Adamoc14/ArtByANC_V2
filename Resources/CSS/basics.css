@@ -32,10 +32,6 @@ img{
     object-fit: cover;
 }
 
-/* hr {
-    margin: 3em;
-    outline: none;
-} */
 /* .barba-container {
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
@@ -55,6 +51,7 @@ input[type=text],
 input[type=email],
 textarea { 
     width: 100%;
+    outline:none;
 }
 textarea{
     border: none;
