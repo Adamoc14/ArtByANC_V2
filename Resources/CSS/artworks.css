@@ -141,9 +141,6 @@
 
 
 @media (max-width: 600px){
-	.artworks {
-		height: 675vh;
-	}
 	.filter_container{
 		width: 85vw;
 	}

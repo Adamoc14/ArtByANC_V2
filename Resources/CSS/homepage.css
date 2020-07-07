@@ -185,9 +185,6 @@
 
 /* Media Queries */
 @media (max-width: 600px) {
-	.home {
-		height: 215vh;
-	}
 	.main_top_container {
 		height: 37vh;
 	}

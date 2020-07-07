@@ -48,6 +48,7 @@ img{
 
 .wrapper {
     min-height: 100vh;
+    margin-bottom: 20vh;
 }
 
 input[type=text],
@@ -148,6 +149,9 @@ label{
     }
     .art_by_anc_default_btn{
         font-size: 2.5vw;
+    }
+    .loading_eye h2{
+        font-size: 4.5vw;
     }
 
 }
