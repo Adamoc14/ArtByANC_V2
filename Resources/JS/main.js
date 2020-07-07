@@ -225,6 +225,7 @@ const adoptMessage = africaStorage => {
     document.querySelector('.number').value = ""
     document.querySelector('.address').value = ""
     document.querySelector('.africaPiece').value = ""
+    document.querySelector('.thank_you_modal').style.display = "block"
     $("html, body").animate({ scrollTop: 0 }, "fast");
 }
 
@@ -414,6 +415,7 @@ barba.init({
         {   
             namespace: 'africa',
             afterEnter() {
+                headerLogoInit()
                 let urlParams = new URLSearchParams(window.location.search);
                 $('.africaPiece').get(0).value = urlParams.get('piece');
                 $('.africa_btn').click((e) => {
