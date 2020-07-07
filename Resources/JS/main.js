@@ -21,7 +21,9 @@ let eye = $('.eye_logo')
 
 /**
  * Global Page Functions
- */
+*/
+
+let page = ""
 
 const headerLogoInit = () => {
     console.log('We have lift off ')
@@ -203,8 +205,27 @@ const firebaseInit = () => {
         measurementId: "G-PD1GXNZL2G"
     }
     firebase.initializeApp(firebaseConfig)
-    var databaseStorage = firebase.database().ref().child('emails')
-    firebaseSend(databaseStorage)
+    let databaseStorage = firebase.database().ref().child('emails'),
+    africaStorage = firebase.database().ref().child('adoptions')
+    if (page === "contact")
+        firebaseSend(databaseStorage)
+    else 
+        adoptMessage(africaStorage)
+}
+
+const adoptMessage = africaStorage => {
+    var adoption = {
+        name: $('.name').val(),
+        number: $('.number').val(),
+        address: $('.address').val(),
+        africaPiece: $('.africaPiece').val()
+    }
+    africaStorage.push(adoption)
+    document.querySelector('.name').value = ""
+    document.querySelector('.number').value = ""
+    document.querySelector('.address').value = ""
+    document.querySelector('.africaPiece').value = ""
+    $("html, body").animate({ scrollTop: 0 }, "fast");
 }
 
 const firebaseSend = databaseStorage => {
@@ -271,22 +292,22 @@ const shopInit = () => {
     // Paddle.Setup({ vendor: 32931 });
 }
 
-const fillCart = () => {
-    $('.purchase_btn').click((e) => {
-        e.preventDefault();
-        let code = e.target.dataset.code;
-        $('.popup_code_modal').css('display' , 'block')
-        document.querySelector('.code_reveal').innerHTML = code;
-        // e.preventDefault()
-        // let id = e.target.dataset.id,
-        //     price = e.target.dataset.price
-        // product = { price: id, quantity: 1 }
-        // arrayofprices = []
-        // arrayofprices.push(product)
-        // console.log(id, price, arrayofprices)
-        // stripeCheckout(arrayofprices)
-    })
-}
+// const fillCart = () => {
+//     $('.purchase_btn').click((e) => {
+//         e.preventDefault();
+//         let code = e.target.dataset.code;
+//         $('.popup_code_modal').css('display' , 'block')
+//         document.querySelector('.code_reveal').innerHTML = code;
+//         // e.preventDefault()
+//         // let id = e.target.dataset.id,
+//         //     price = e.target.dataset.price
+//         // product = { price: id, quantity: 1 }
+//         // arrayofprices = []
+//         // arrayofprices.push(product)
+//         // console.log(id, price, arrayofprices)
+//         // stripeCheckout(arrayofprices)
+//     })
+// }
 
 const stripeCheckout = arrayofprices => {
     var stripe = Stripe('pk_test_XRkwTYQW3fRAtXjzPo2guqET');
@@ -350,6 +371,7 @@ barba.init({
             afterEnter() {
                 headerLogoInit()
                 $('.contact_btn').click((e) => {
+                    page = "africa"
                     var form = $('.formContainer').get(0)
                     var isValid = gatherInputs(form)
                     if (!isValid)
@@ -389,6 +411,20 @@ barba.init({
                 })
             },
         },
+        {   
+            namespace: 'africa',
+            afterEnter() {
+                $('.africa_btn').click((e) => {
+                    page = "africa"
+                    var form = $('.formContainer').get(0)
+                    var isValid = gatherInputs(form)
+                    if (!isValid)
+                        e.preventDefault()
+                    firebaseInit()
+                })
+            }
+
+        }
     ],
 });
 
