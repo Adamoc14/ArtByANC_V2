@@ -76,7 +76,7 @@
 }
 
 .image_container:nth-child(4n + 4) {
-	grid-row-start: span 3;
+	grid-row-start: span 1;
 }
 
 .image_container:nth-child(5n + 5) {
