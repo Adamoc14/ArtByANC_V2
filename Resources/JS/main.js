@@ -207,6 +207,7 @@ const firebaseInit = () => {
     firebase.initializeApp(firebaseConfig)
     let databaseStorage = firebase.database().ref().child('emails'),
     africaStorage = firebase.database().ref().child('adoptions')
+    console.log(page)
     if (page === "contact")
         firebaseSend(databaseStorage)
     else 
@@ -372,7 +373,7 @@ barba.init({
             afterEnter() {
                 headerLogoInit()
                 $('.contact_btn').click((e) => {
-                    page = "africa"
+                    page = "contact"
                     var form = $('.formContainer').get(0)
                     var isValid = gatherInputs(form)
                     if (!isValid)
