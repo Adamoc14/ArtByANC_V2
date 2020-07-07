@@ -96,7 +96,7 @@
 } */
 
 .image_container:nth-child(8n + 8) {
-	grid-row-start: span 3;
+	grid-row-start: span 2;
 }
 
 .image_container img {
