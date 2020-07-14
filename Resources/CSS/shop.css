@@ -17,6 +17,17 @@
     width: 18vw;
     height: 51vh;
 }
+.sold_btn {
+    position: absolute;
+    background: black;
+    color: white;
+    width: 6vw;
+    padding: 1em .3em;
+    font-weight: 200;
+    font-size: 1.2vw;
+    text-transform: uppercase;
+    border-radius: 50%;
+}
 
 .detailsContainer {
     height: 19vh;
@@ -72,6 +83,7 @@
     align-items: center;
     justify-content: space-around;
 }
+
 
 
 @media (max-width: 600px){
