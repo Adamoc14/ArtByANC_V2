@@ -17,7 +17,7 @@
     width: 18vw;
     height: 51vh;
 }
-.sold_btn {
+.sold_btn , .sold_collection_btn{
     position: absolute;
     background: black;
     color: white;
@@ -27,6 +27,11 @@
     font-size: 1.2vw;
     text-transform: uppercase;
     border-radius: 50%;
+}
+
+.sold_collection_btn{
+    top: 0;
+    left: 7vw;
 }
 
 .detailsContainer {
@@ -79,6 +84,7 @@
 
 .collection_container {
     display: flex;
+    position: relative;
     width: 80vw;
     align-items: center;
     justify-content: space-around;
