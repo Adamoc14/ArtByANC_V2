@@ -127,9 +127,20 @@
         font-size: 4.5vw;
     }
     .main_collection_container_sm {
+        position: relative;
         padding: 2em;
     }
     .main_collection_container h2{
         font-size: 4.5vw;
+    }
+    .sold_btn, .sold_collection_btn {
+        top: 7vw;
+        left: 15vw;
+        font-size: 3vw;
+        width: 13vw;
+    }
+    .sold_collection_btn {
+        left: 14vw;
+        top: 0;
     }
 }
